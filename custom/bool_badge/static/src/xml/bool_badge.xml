@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="BoolBadge" owl="1">
+        <span class="badge rounded-pill m-2 p-2 border"
+              t-att-class="props.value ? 'text-white': 'text-black'"
+              t-esc="trueValue"
+              t-attf-style="background-color: {{ props.value ? trueColor : defaultColor }}"
+              t-on-click="() => this.updateValue(true)"/>
+        <span class="badge rounded-pill m-2 p-2 border"
+              t-att-class="props.value ? 'text-black': 'text-white'"
+              t-esc="falseValue"
+              t-attf-style="background-color: {{ props.value ? defaultColor : falseColor }}"
+              t-on-click="() => this.updateValue(false)"/>
+    </t>
+</templates>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Form View    -->
+    <record id="rental_request_v2_form_view" model="ir.ui.view">
+        <field name="name">rental.charge.form</field>
+        <field name="model">rental.charge</field>
+        <field name="arch" type="xml">
+            <form string="Rental Charge">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="time"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

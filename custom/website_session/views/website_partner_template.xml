@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_partner_template" name="Partner">
+        <t t-call="website.layout">
+            <div class="container">
+                <span>Hello, <t t-esc="request.env.user.name"/></span>
+
+                <form class="form col-6" method="post" action="/create/partner">
+                    <input type="hidden" name="csrf_token"
+                           t-att-value="request.csrf_token()"/>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="text" name="phone" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="street">Street:</label>
+                        <input type="text" name="street" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="street">Country:</label>
+                        <select id="country_ids" name="country" class="form-control">
+                            <t t-foreach="country_ids" t-as="country">
+                                <option t-att-value="country.id">
+                                    <t t-esc="country.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="website_partner_success_template" name="Success">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="alert alert success">
+                    <span>Successfully Created <t t-esc="partner_id.name"/></span>
+                </div>
+
+                <div class="row">
+                    <t t-foreach="partner_ids" t-as="partner">
+                        <div class="card col-3">
+                            <div class="card-body">
+                                <div class="card-header">
+                                    <span t-esc="partner.name"/>
+                                </div>
+                                <div class="card-body">
+                                    <span t-field="partner.image_1920" t-options="{'widget': 'image'}"/>
+                                </div>
+                                <div class="card-footer">
+                                    <a t-attf-href="/view/partner/{{slug(partner)}}" class="btn btn-secondary"> view </a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="website_partner_view_template" name="Partner">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="card col-3">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <span t-esc="partner.name"/>
+                        </div>
+                        <div class="card-body">
+                            <span t-field="partner.image_1920" t-options="{'widget': 'image'}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--    Tree View-->
+    <record id="rental_request_v2_tree_view" model="ir.ui.view">
+        <field name="name">rental.request.tree</field>
+        <field name="model">rental.request</field>
+        <field name="arch" type="xml">
+            <tree string="Rent">
+                <field name="sequence_no"/>
+                <field name="customer_id"/>
+                <field name="request_date"/>
+                <field name="vehicle_id"/>
+                <field name="from_date"/>
+                <field name="to_date"/>
+                <field name="period"/>
+                <field name="state"/>
+                <field name="rent"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--Form View    -->
+    <record id="rental_request_v2_form_view" model="ir.ui.view">
+        <field name="name">rental.request.form</field>
+        <field name="model">rental.request</field>
+        <field name="arch" type="xml">
+            <form string="Rental">
+                <header>
+                    <button name="action_confirm" data-hotkey="v"
+                            string="Confirm" class="btn-primary" type="object"
+                            context="{'validate_analytic': True}"
+                            attrs="{'invisible': [('state', 'in', ['confirm','returned'])]}"/>
+                    <button name="action_return" data-hotkey="v" string="Return"
+                            class="btn-primary" type="object"
+                            context="{'validate_analytic': True}"
+                            attrs="{'invisible': [('state', 'in', ['draft','returned'])]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="sequence_no" invisible="1"/>
+                            <field name="customer_id"
+                                   widget="res_partner_many2one"
+                                   context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}"
+                                   options="{&quot;always_reload&quot;: True}"/>
+                            <field name="request_date"/>
+                            <field name="vehicle_id"/>
+                            <field name="from_date"/>
+                            <field name="to_date"/>
+                            <field name="period"/>
+                            <field name="state" invisible="1"/>
+                            <field name="period_type_id"/>
+                            <field name="rent"/>
+                            <field name="warning"/>
+                            <field name="late"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

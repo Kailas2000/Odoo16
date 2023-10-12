@@ -47,7 +47,8 @@
                     <group class="oe_title">
                         <field name="from_date"/>
                         <field name="to_date"/>
-                        <field name="name"/>
+                        <field name="name_id"/>
+                        <field name="customer_id"/>
                     </group>
                 </sheet>
                 <footer>

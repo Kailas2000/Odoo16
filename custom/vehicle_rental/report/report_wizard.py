@@ -10,9 +10,10 @@ class ReportWizard(models.TransientModel):
                            help="Report data will be visible from From Date")
    to_date = fields.Date(string="ToDate",
                          help="Data will be visible upto this date, if mention")
-   name = fields.Many2one(comodel_name='rental.vehicle',
+   name_id = fields.Many2one(comodel_name='rental.vehicle',
                           string="Vehicle Name",
                           help="To access the vehicles")
+   customer_id = fields.Many2one("res.partner", string="Customer")
 
    def button_action(self):
       """While clicking the button from the form

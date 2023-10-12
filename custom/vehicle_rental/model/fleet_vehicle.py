@@ -6,4 +6,5 @@ class FleetVehicle(models.Model):
     _inherit = 'fleet.vehicle'
 
     registration_date = fields.Date(string="Registration Date",
-                                    default=fields.Date.today)
+                                    default=fields.Date.today,
+                                    help="Registration date of the vehicle")

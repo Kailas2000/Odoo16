@@ -11,9 +11,10 @@ class RentCharge(models.Model):
     time = fields.Selection(
         string='Time',
         selection=[('hour', 'Hour'), ('day', 'Day'), ('weak', 'Weak'),
-                   ('month', 'Month')]
+                   ('month', 'Month')],
+        help="Time period of the rental vehicle"
     )
-    amount = fields.Float('Amount')
+    amount = fields.Float('Amount', help="Amount for the particular time period")
     time_id = fields.Many2one("rental.vehicle", string="Rent Charge")
 
     # To avoid the duplication of the time in rent charges

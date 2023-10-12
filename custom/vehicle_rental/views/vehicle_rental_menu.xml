@@ -37,11 +37,45 @@
         </field>
     </record>
 
-    <!--    Menu Bar-->
+    <!--    Form for the wizard-->
+    <record id="rental_report_view_form" model="ir.ui.view">
+        <field name="name">report.wizard.form</field>
+        <field name="model">report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Report PDF">
+                <sheet>
+                    <group class="oe_title">
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="button_action" string="Submit" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="rental_report" model="ir.actions.act_window">
+        <field name="name">Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="rental_report_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+<!--    Menu Bar-->
     <menuitem id="rental_menu_root" name="Vehicle Rental" sequence="10"/>
+    <!--    Rent Request-->
     <menuitem id="rental_first_menu_root" name="Rent Request" parent="rental_menu_root" sequence="1"/>
     <menuitem parent="rental_first_menu_root" id="rental_first_submenu_root" name="Rent Request" action="rent_request_action"/>
+    <!--    Vehicle Rental-->
     <menuitem id="rental_second_menu_root" name="Vehicle Rental" parent="rental_menu_root" sequence="2"/>
     <menuitem parent="rental_second_menu_root" id="rental_second_submenu_root" name="Rental Vehicle" action="rental_action"/>
-
+    <!--    Report PDF-->
+    <menuitem id="rental_third_menu_root" name="Report" parent="rental_menu_root" sequence="3"/>
+    <menuitem parent="rental_third_menu_root" id="rental_third_submenu_root" name="Rental Report" action="rental_report"/>
 </odoo>

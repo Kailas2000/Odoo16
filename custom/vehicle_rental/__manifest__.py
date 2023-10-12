@@ -19,8 +19,12 @@
         'security/rule.xml',
         'security/ir.model.access.csv',
 
+        'report/ir_report_templates.xml',
+        'report/report.xml',
+
         'data/sequence.xml',
         'data/ir_cron_data_warning.xml',
+
         'views/rental_vehicle_view.xml',
         'views/custom_fleet_view.xml',
         'views/rent_request.xml',

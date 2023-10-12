@@ -15,7 +15,7 @@ class ReportWizard(models.TransientModel):
                           help="To access the vehicles")
    customer_id = fields.Many2one("res.partner", string="Customer")
 
-   def button_action(self):
+   def button_action_pdf(self):
       """While clicking the button from the form
        it return to the report.xml action."""
       return self.env.ref('vehicle_rental.action_report_vehicle_rental'

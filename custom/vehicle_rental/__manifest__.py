@@ -19,6 +19,7 @@
         'security/rule.xml',
         'security/ir.model.access.csv',
 
+        'report/report_wizard_view.xml',
         'report/ir_report_templates.xml',
         'report/report.xml',
 

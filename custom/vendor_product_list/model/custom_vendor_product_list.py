@@ -19,7 +19,6 @@ class VendorPurchaseOrderLine(models.Model):
         records = self.env['product.supplierinfo'].search(
             [('partner_id', '=', self.order_id.partner_id.id)]).mapped(
             'product_tmpl_id.id')
-
         # Convert product_tmpl into product_product
         self.product_list_id = self.env['product.product'].search(
             [('product_tmpl_id', 'in', records)]).ids

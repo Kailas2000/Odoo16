@@ -16,7 +16,7 @@
                 </sheet>
                 <footer>
                     <button name="button_action_pdf" string="Print PDF" type="object" class="btn-primary"/>
-<!--                    <button name="button_action_xlsx" string="Print XLSX" type="object" class="btn-primary"/>-->
+                    <button name="button_action_xlsx" string="Print XLSX" type="object" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

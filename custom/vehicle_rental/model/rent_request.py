@@ -166,3 +166,4 @@ class RentRequest(models.Model):
     def _compute_payment_state(self):
         """Checking payment status to show the ribbon"""
         self.payment_states = True if self.invoice_data_id.payment_state == 'paid' else False
+

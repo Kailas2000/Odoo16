@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 
 class VehicleRentalReport(models.AbstractModel):
@@ -12,8 +12,6 @@ class VehicleRentalReport(models.AbstractModel):
         """The model will be called from the action, the
          datas will be in the parameter data and the query
          will be processed based on the user 'input'"""
-        if data['to_date'] < data['from_date']:
-            raise UserError('To date must after From date.')
 
         query = """select pr.name as name, fv.name as model, 
                 rr.period, rr.from_date, rr.to_date, rr.state from rent_request as rr

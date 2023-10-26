@@ -317,7 +317,7 @@ msgstr ""
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_form
 msgid "<i class=\"fa fa-envelope\"/> Send this as winner"
-msgstr "<i class=\"fa fa-envelope\"/> Dies als Gewinner versenden"
+msgstr "<i class=\"fa fa-envelope\"/> Als Gewinner versenden"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_contact_view_kanban
@@ -691,7 +691,7 @@ msgstr "A/B-Test: %s"
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_mailing__ab_testing_completed
 #: model:ir.model.fields,field_description:mass_mailing.field_utm_campaign__ab_testing_completed
 msgid "A/B Testing Campaign Finished"
-msgstr "A/B-Test-Kampagne beendet"
+msgstr "A/B-Testkampagne beendet"
 
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_mailing__ab_testing_description
@@ -701,7 +701,7 @@ msgstr "Beschreibung des A/B-Tests"
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_mailing__ab_testing_pc
 msgid "A/B Testing percentage"
-msgstr "A/B-Testing-Prozentsatz"
+msgstr "Prozentsatz des A/B-Tests"
 
 #. module: mass_mailing
 #. odoo-python
@@ -803,7 +803,7 @@ msgstr "Fügen Sie einen großen Slogan hinzu."
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_contact_to_list_view_form
 msgid "Add and Send Mailing"
-msgstr "Hinzufügen und Mailing senden"
+msgstr "Mailing hinzufügen und senden"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_contact_view_tree
@@ -899,7 +899,7 @@ msgstr ""
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_mailing__ab_testing_enabled
 msgid "Allow A/B Testing"
-msgstr "A/B-Testing zulassen"
+msgstr "A/B-Tests zulassen"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.res_config_settings_view_form
@@ -1723,7 +1723,7 @@ msgstr "Löschen"
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.s_features_grid
 msgid "Delete Blocks"
-msgstr "Bausteine Löschen"
+msgstr "Blöcke löschen"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.s_three_columns
@@ -1884,7 +1884,7 @@ msgstr "Entwurf"
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_kanban
 msgid "Dropdown menu"
-msgstr "Dropdownmenu"
+msgstr "Drop-down-Menü"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.s_features_grid
@@ -2304,7 +2304,7 @@ msgid ""
 "related mail_mail can be deleted separately from its statistics. However the"
 " ID is needed for several action and controllers."
 msgstr ""
-"ID der zugehörigen mail_mail. Dieses Feld ist eine Ganzzahl, weil das "
+"ID der zugehörigen mail_mail. Dieses Feld ist eine Ganzzahl, weil die "
 "zugehörige mail_mail separat von dessen Statistiken gelöscht werden kann. "
 "Diese ID wird allerdings für verschiedene Aktionen und Controller benötigt."
 
@@ -2393,7 +2393,7 @@ msgstr "Bilder"
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_contact_import_view_form
 #, python-format
 msgid "Import"
-msgstr "Import"
+msgstr "Importieren"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_list_view_kanban
@@ -2674,7 +2674,7 @@ msgstr "Mail-ID (tech.)"
 #: model:ir.actions.server,name:mass_mailing.ir_cron_mass_mailing_ab_testing_ir_actions_server
 #: model:ir.cron,cron_name:mass_mailing.ir_cron_mass_mailing_ab_testing
 msgid "Mail Marketing: A/B Testing"
-msgstr "Mail-Marketing: A/B-Test"
+msgstr "Mail-Marketing: A/B-Tests"
 
 #. module: mass_mailing
 #: model:ir.actions.server,name:mass_mailing.ir_cron_mass_mailing_queue_ir_actions_server
@@ -2697,7 +2697,7 @@ msgstr "Mailserver"
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_mailing__mail_server_available
 msgid "Mail Server Available"
-msgstr "Mail-Server verfügbar"
+msgstr "Mailserver verfügbar"
 
 #. module: mass_mailing
 #: model:ir.actions.act_window,name:mass_mailing.action_view_mail_mail_statistics_mailing
@@ -2778,7 +2778,7 @@ msgstr "Mailingliste"
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_contact_view_search
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_contact_view_tree
 msgid "Mailing List Contacts"
-msgstr "Mailinglisten-Kontakte"
+msgstr "Mailinglistenkontakte"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_contact_subscription_view_form
@@ -2907,7 +2907,7 @@ msgstr "Massenmailingkampagne verwalten"
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.res_config_settings_view_form
 msgid "Manage mass mailing campaigns"
-msgstr "Massenmailingkampagnen verwalten"
+msgstr "Verwalten Sie Massenmailingkampagnen"
 
 #. module: mass_mailing
 #: model:ir.model.fields.selection,name:mass_mailing.selection__utm_campaign__ab_testing_winner_selection__manual
@@ -3468,9 +3468,9 @@ msgid ""
 "Opt out flag for a specific mailing list. This field should not be used in a"
 " view without a unique and active mailing list context."
 msgstr ""
-"Abmeldungsflagge für bestimmte Mailinglisten. Dieses Feld sollte nicht in "
-"einer Ansicht ohne einen eindeutigen und aktiven Mailinglistenkontext "
-"verwendet werden."
+"Abmeldungskennzeichnung für bestimmte Mailinglisten. Dieses Feld sollte "
+"nicht in einer Ansicht ohne einen eindeutigen und aktiven "
+"Mailinglistenkontext verwendet werden."
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_list_view_tree
@@ -3596,7 +3596,7 @@ msgstr "Vorschau"
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_form
 msgid "Preview Text"
-msgstr "Text-Vorschau"
+msgstr "Vorschautext"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.snippet_options
@@ -4094,7 +4094,7 @@ msgstr "Gesendet am"
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_search
 msgid "Sent Period"
-msgstr "Gesendete Periode"
+msgstr "Versandperiode"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_kanban
@@ -4165,7 +4165,7 @@ msgstr "Klein"
 #: model_terms:ir.ui.view,arch_db:mass_mailing.snippet_options
 #: model_terms:ir.ui.view,arch_db:mass_mailing.snippet_options_border_line_widgets
 msgid "Solid"
-msgstr "Durchgezogen"
+msgstr "Voll"
 
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_mailing__source_id
@@ -4296,7 +4296,7 @@ msgstr "Vorlage"
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_form
 msgid "Test"
-msgstr "Test"
+msgstr "Testen"
 
 #. module: mass_mailing
 #. odoo-python
@@ -4375,7 +4375,7 @@ msgstr ""
 #. module: mass_mailing
 #: model:ir.model.constraint,message:mass_mailing.constraint_mailing_mailing_percentage_valid
 msgid "The A/B Testing Percentage needs to be between 0 and 100%"
-msgstr "Der Prozentsatz der A/B-Tests muss zwischen 0 und 100 % liegen."
+msgstr "Der Prozentsatz des A/B-Tests muss zwischen 0 und 100 % liegen."
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.ab_testing_description
@@ -4557,7 +4557,8 @@ msgstr ""
 msgid ""
 "This will send the email to all recipients. Do you still want to proceed ?"
 msgstr ""
-"Dies sendet die E-Mail an alle Empfänger. Möchten Sie trotzdem fortfahren?"
+"Die E-Mail wird dadurch an alle Empfänger (oder bei A/B-Tests an den "
+"ausgewählten Prozentsatz) gesendet. Möchten Sie trotzdem fortfahren?"
 
 #. module: mass_mailing
 #: model:ir.model.fields,help:mass_mailing.field_mailing_mailing__reply_to_mode
@@ -4630,7 +4631,7 @@ msgstr "Gesamt"
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_list_view_kanban
 msgid "Total <br/>Contacts"
-msgstr "Insgesamt <br/>Kontakte"
+msgstr "Kontakte <br/>insgesamt"
 
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_utm_campaign__ab_testing_total_pc
@@ -4724,7 +4725,7 @@ msgstr "Abmelden"
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.unsubscribe
 msgid "Unsubscribed"
-msgstr "Abmelden"
+msgstr "Abgemeldet"
 
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_contact_subscription__unsubscription_date

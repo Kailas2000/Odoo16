@@ -250,7 +250,7 @@ class AccountPayment(models.Model):
     def action_unmark_sent(self):
         """ Unmarking as sent for electronic/deferred check would give the option to print and re-number check but
         it's not implemented yet for this kind of checks"""
-        if self.filtered('l10n_latam_manual_checks'):
+        if self.filtered(lambda x: x.payment_method_line_id.code == 'check_printing' and x.l10n_latam_manual_checks):
             raise UserError(_('Unmark sent is not implemented for electronic or deferred checks'))
         return super().action_unmark_sent()
 
@@ -262,7 +262,7 @@ class AccountPayment(models.Model):
         res = super().action_post()
 
         # mark own checks that are not printed as sent
-        self.filtered('l10n_latam_manual_checks').write({'is_move_sent': True})
+        self.filtered(lambda x: x.payment_method_line_id.code == 'check_printing' and x.l10n_latam_manual_checks).write({'is_move_sent': True})
         return res
 
     @api.model
@@ -337,3 +337,17 @@ class AccountPayment(models.Model):
                     default_l10n_latam_check_id=rec.l10n_latam_check_id,
                 ))._create_paired_internal_transfer_payment()
         super(AccountPayment, self - third_party_checks)._create_paired_internal_transfer_payment()
+
+    @api.constrains('l10n_latam_check_id')
+    def _check_l10n_latam_check_id(self):
+        if self.filtered(lambda x: x.payment_method_line_id.code == 'out_third_party_checks'):
+            payments = self.env['account.payment'].search_count([
+                ('l10n_latam_check_id', 'in', self.l10n_latam_check_id.ids),
+                ('payment_type', '=', 'outbound'),
+                ('journal_id', 'in', self.journal_id.ids),
+                ('id', 'not in', self.ids)],
+                limit=1)
+            if payments:
+                raise ValidationError(_(
+                    "The check(s) '%s' is already used on another payment. Please select another check or "
+                    "deselect the check on this payment.", self.l10n_latam_check_id.mapped('display_name')))

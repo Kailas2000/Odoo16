@@ -60,7 +60,7 @@
                                                             <span class="s_website_form_mark"> *</span>
                                                         </label>
                                                         <div class="col-sm">
-                                                            <input id="contact1" type="text" class="form-control s_website_form_input" name="name" F/>
+                                                            <input id="contact1" type="text" class="form-control s_website_form_input" name="name" required="" data-fill-with="name"/>
                                                         </div>
                                                     </div>
                                                 </div>

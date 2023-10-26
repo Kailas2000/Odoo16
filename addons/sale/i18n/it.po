@@ -3084,7 +3084,7 @@ msgstr "Termini di pagamento"
 #. module: sale
 #: model:ir.model,name:sale.model_payment_transaction
 msgid "Payment Transaction"
-msgstr "Transazione di pagamento"
+msgstr "Operazione di pagamento"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.sale_order_portal_content
@@ -3478,7 +3478,7 @@ msgstr "Respingimento del preventivo"
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_sale_order_cancel__render_model
 msgid "Rendering Model"
-msgstr "Rendering Model"
+msgstr "Modello di rendering"
 
 #. module: sale
 #: model:ir.ui.menu,name:sale.menu_sale_report
@@ -3854,7 +3854,8 @@ msgstr "Vendita di prodotti per multipli del n. di unità per collo"
 #: model_terms:ir.ui.view,arch_db:sale.res_config_settings_view_form
 msgid "Sell variants of a product using attributes (size, color, etc.)"
 msgstr ""
-"Vendita di varianti prodotto usando gli attributi (taglia, colore ecc.)"
+"Vendi varianti del prodotto utilizzando gli attributi (dimensione, colore, "
+"ecc.)"
 
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form

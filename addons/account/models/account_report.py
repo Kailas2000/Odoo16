@@ -193,8 +193,18 @@ class AccountReport(models.Model):
         code_mapping = {}
         for line in self.line_ids.filtered(lambda x: not x.parent_id):
             line._copy_hierarchy(copied_report, code_mapping=code_mapping)
+
+        # Replace line codes by their copy in aggregation formulas
+        for expression in copied_report.line_ids.expression_ids:
+            if expression.engine == 'aggregation':
+                copied_formula = f" {expression.formula} " # Add spaces so that the lookahead/lookbehind of the regex can work (we can't do a | in those)
+                for old_code, new_code in code_mapping.items():
+                    copied_formula = re.sub(f"(?<=\\W){old_code}(?=\\W)", new_code, copied_formula)
+                expression.formula = copied_formula.strip() # Remove the spaces introduced for lookahead/lookbehind
+
         for column in self.column_ids:
             column.copy({'report_id': copied_report.id})
+
         return copied_report
 
     @api.ondelete(at_uninstall=False)
@@ -329,13 +339,6 @@ class AccountReportLine(models.Model):
         # Update aggregation expressions, so that they use the copied lines
         for expression in self.expression_ids:
             copy_defaults = {'report_line_id': copied_line.id}
-
-            if expression.engine == 'aggregation':
-                copied_formula = f" {expression.formula} " # Add spaces so that the lookahead/lookbehind of the regex can work (we can't do a | in those)
-                for old_code, new_code in code_mapping.items():
-                    copied_formula = re.sub(f"(?<=\\W){old_code}(?=\\W)", new_code, copied_formula)
-                copy_defaults['formula'] = copied_formula.strip() # Remove the spaces introduced for lookahead/lookbehind
-
             expression.copy(copy_defaults)
 
     def _get_copied_code(self):
@@ -584,19 +587,25 @@ class AccountReportExpression(models.Model):
         to_expand = self.filtered(lambda x: x.engine == 'aggregation')
         while to_expand:
             domains = []
+            sub_expressions = self.env['account.report.expression']
 
             for candidate_expr in to_expand:
-                labels_by_code = candidate_expr._get_aggregation_terms_details()
+                if candidate_expr.formula == 'sum_children':
+                    sub_expressions |= candidate_expr.report_line_id.children_ids.expression_ids.filtered(lambda e: e.label == candidate_expr.label)
+                else:
+                    labels_by_code = candidate_expr._get_aggregation_terms_details()
 
-                cross_report_domain = []
-                if candidate_expr.subformula != 'cross_report':
-                    cross_report_domain = [('report_line_id.report_id', '=', candidate_expr.report_line_id.report_id.id)]
+                    cross_report_domain = []
+                    if candidate_expr.subformula != 'cross_report':
+                        cross_report_domain = [('report_line_id.report_id', '=', candidate_expr.report_line_id.report_id.id)]
 
-                for line_code, expr_labels in labels_by_code.items():
-                    dependency_domain = [('report_line_id.code', '=', line_code), ('label', 'in', tuple(expr_labels))] + cross_report_domain
-                    domains.append(dependency_domain)
+                    for line_code, expr_labels in labels_by_code.items():
+                        dependency_domain = [('report_line_id.code', '=', line_code), ('label', 'in', tuple(expr_labels))] + cross_report_domain
+                        domains.append(dependency_domain)
 
-            sub_expressions = self.env['account.report.expression'].search(osv.expression.OR(domains))
+            if domains:
+                sub_expressions |= self.env['account.report.expression'].search(osv.expression.OR(domains))
+
             to_expand = sub_expressions.filtered(lambda x: x.engine == 'aggregation' and x not in result)
             result |= sub_expressions
 
@@ -687,7 +696,10 @@ class AccountReportExpression(models.Model):
 
         return auto_chosen_target
 
-    def action_view_carryover_lines(self, options):
+    def action_view_carryover_lines(self, options, column_group_key=None):
+        if column_group_key:
+            options = self.report_line_id.report_id._get_column_group_options(options, column_group_key)
+
         date_from, date_to, dummy = self.report_line_id.report_id._get_date_bounds_info(options, self.date_scope)
 
         return {

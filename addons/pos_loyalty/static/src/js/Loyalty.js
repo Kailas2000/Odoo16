@@ -21,6 +21,9 @@ function _newRandomRewardCode() {
 }
 
 let nextId = -1;
+
+let pointsForProgramsCountedRules = {};
+
 export class PosLoyaltyCard {
     /**
      * @param {string} code coupon code
@@ -88,6 +91,7 @@ const PosLoyaltyGlobalState = (PosGlobalState) => class PosLoyaltyGlobalState ex
             reward.all_discount_product_ids = new Set(reward.all_discount_product_ids);
         }
 
+        this.fieldTypes = loadedData['field_types'];
         await super._processData(loadedData);
         this.productId2ProgramIds = loadedData['product_id_to_program_ids'];
         this.programs = loadedData['loyalty.program'] || []; //TODO: rename to `loyaltyPrograms` etc
@@ -115,6 +119,15 @@ const PosLoyaltyGlobalState = (PosGlobalState) => class PosLoyaltyGlobalState ex
 
         try {
             products
+                .map(product => {
+                    const modifiedProduct = { ...product };
+                    Object.keys(modifiedProduct).forEach(key => {
+                        if (this.fieldTypes['product.product'][key] === 'many2one') {
+                            modifiedProduct[key] = modifiedProduct[key][1];
+                        }
+                    });
+                    return modifiedProduct;
+                })
                 .filter((product) => domain.contains(product))
                 .forEach(product => reward.all_discount_product_ids.add(product.id));
         } catch (error) {
@@ -672,6 +685,7 @@ const PosLoyaltyOrder = (Order) => class PosLoyaltyOrder extends Order {
                         program_id: program.id,
                         coupon_id: coupon.id,
                         barcode: pa.barcode,
+                        appliedRules: pointsForProgramsCountedRules[program.id]
                     };
                 }
             }
@@ -841,6 +855,7 @@ const PosLoyaltyOrder = (Order) => class PosLoyaltyOrder extends Order {
      * @returns {Object} Containing the points gained per program
      */
     pointsForPrograms(programs) {
+        pointsForProgramsCountedRules = {};
         const totalTaxed = this.get_total_with_tax();
         const totalUntaxed = this.get_total_without_tax();
         const totalsPerProgram = Object.fromEntries(programs.map((program) => [program.id, {'untaxed': totalUntaxed, 'taxed': totalTaxed}]));
@@ -906,6 +921,10 @@ const PosLoyaltyOrder = (Order) => class PosLoyaltyOrder extends Order {
                     // For example, when refunding an ewallet payment. See TicketScreen override in this addon.
                     continue;
                 }
+                if (!(program.id in pointsForProgramsCountedRules)) {
+                    pointsForProgramsCountedRules[program.id] = [];
+                }
+                pointsForProgramsCountedRules[program.id].push(rule.id)
                 if (program.applies_on === 'future' && rule.reward_point_split && rule.reward_point_mode !== 'order') {
                     // In this case we count the points per rule
                     if (rule.reward_point_mode === 'unit') {
@@ -939,7 +958,7 @@ const PosLoyaltyOrder = (Order) => class PosLoyaltyOrder extends Order {
                     }
                 }
             }
-            const res = points ? [{points}] : [];
+            const res = (points || program.program_type === 'coupons') ? [{points}] : [];
             if (splitPoints.length) {
                 res.push(...splitPoints);
             }
@@ -1375,7 +1394,7 @@ const PosLoyaltyOrder = (Order) => class PosLoyaltyOrder extends Order {
         const result = Object.entries(discountablePerTax).reduce((lst, entry) => {
             // Ignore 0 price lines
             if (!entry[1]) {
-                return;
+                return lst;
             }
             const taxIds = entry[0] === '' ? [] : entry[0].split(',').map((str) => parseInt(str));
             lst.push({
@@ -1435,23 +1454,29 @@ const PosLoyaltyOrder = (Order) => class PosLoyaltyOrder extends Order {
             if (this._isRewardProductPartOfRules(reward, product)) {
                 // OPTIMIZATION: Pre-calculate the factors for each reward-product combination during the loading.
                 // For points not based on quantity, need to normalize the points to compute free quantity.
-                const factor = reward.program_id.rules.reduce((result, rule) => {
+                const appliedRulesIds = this.couponPointChanges[coupon_id].appliedRules;
+                const appliedRules = appliedRulesIds !== undefined
+                    ? reward.program_id.rules.filter(rule => appliedRulesIds.includes(rule.id))
+                    : reward.program_id.rules;
+                let factor = 0;
+                let orderPoints = 0;
+                for (const rule of appliedRules) {
                     if (rule.any_product || rule.valid_product_ids.has(product.id)) {
                         if (rule.reward_point_mode === 'order') {
-                            result += rule.reward_point_amount;
+                            orderPoints += rule.reward_point_amount;
                         } else if (rule.reward_point_mode === 'money') {
-                            result += round_precision(rule.reward_point_amount * product.lst_price, 0.01);
+                            factor += round_precision(rule.reward_point_amount * product.lst_price, 0.01);
                         } else if (rule.reward_point_mode === 'unit') {
-                            result += rule.reward_point_amount;
+                            factor += rule.reward_point_amount;
                         }
                     }
-                    return result;
-                }, 0)
+                }
                 if (factor === 0) {
                     freeQty = Math.floor((remainingPoints / reward.required_points) * reward.reward_product_qty);
                 } else {
                     const correction = shouldCorrectRemainingPoints ? this._getPointsCorrection(reward.program_id) : 0
-                    freeQty = computeFreeQuantity((remainingPoints - correction) / factor, reward.required_points / factor, reward.reward_product_qty);
+                    freeQty = computeFreeQuantity((remainingPoints - correction - orderPoints) / factor, reward.required_points / factor, reward.reward_product_qty);
+                    freeQty += Math.floor((orderPoints / reward.required_points) * reward.reward_product_qty);
                 }
             } else {
                 freeQty = Math.floor((remainingPoints / reward.required_points) * reward.reward_product_qty);

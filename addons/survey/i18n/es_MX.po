@@ -259,10 +259,10 @@ msgstr ""
 "                <p>Apreciable <span t-out=\"object.partner_id.name or 'participant'\">participante</span></p>\n"
 "                <p>\n"
 "                    Aquí  encontrará adjunta su certificación de\n"
-"                        <strong t-out=\"object.survey_id.display_name or ''\">Furniture Creation</strong>\n"
+"                        <strong t-out=\"object.survey_id.display_name or ''\">Creación de muebles</strong>\n"
 "                    \n"
 "                </p>\n"
-"                <p>Felicidades por aprobar el cuestionario con un puntaje de <strong t-out=\"object.scoring_percentage\"></strong>% !</p>\n"
+"                <p>¡Felicidades por aprobar el cuestionario con un puntaje de <strong t-out=\"object.scoring_percentage\"></strong>% !</p>\n"
 "            </td></tr>\n"
 "        </tbody>\n"
 "    </table>\n"
@@ -311,7 +311,7 @@ msgstr ""
 "            Le invitamos a realizar un nueva certificación.\n"
 "        </t>\n"
 "        <t t-else=\"\">\n"
-"            Estamos realizando una encuesta y le agradeceríamos su participación.\n"
+"            Estamos realizando una encuesta y agradeceríamos su participación.\n"
 "        </t>\n"
 "        <div style=\"margin: 16px 0px 16px 0px;\">\n"
 "            <a t-att-href=\"(object.get_start_url())\" style=\"background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;\">\n"
@@ -324,10 +324,10 @@ msgstr ""
 "            </a>\n"
 "        </div>\n"
 "        <t t-if=\"object.deadline\">\n"
-"            Por favor responda la encuesta antes del día <t t-out=\"format_date(object.deadline) or ''\">05/05/2021</t>.<br><br>\n"
+"            Responda la encuesta antes del día <t t-out=\"format_date(object.deadline) or ''\">05/05/2021</t>.<br><br>\n"
 "        </t>\n"
 "        <t t-if=\"object.survey_id.certification\">\n"
-"            ¡Le deseamos buena suerte!\n"
+"            ¡Buena suerte!\n"
 "        </t>\n"
 "        <t t-else=\"\">\n"
 "            Le agradecemos de antemano su participación.\n"
@@ -655,7 +655,7 @@ msgid ""
 "<span>Name one animal</span><br/>\n"
 "                                    <i class=\"fa fa-minus fa-4x\" role=\"img\" aria-label=\"Single Line\" title=\"Single Line\"/>"
 msgstr ""
-"<span>Nombre a un animal</span><br/>\n"
+"<span>Nombre un animal</span><br/>\n"
 "                                    <i class=\"fa fa-minus fa-4x\" role=\"img\" aria-label=\"Una sola línea\" title=\"Una sola línea\"/>"
 
 #. module: survey
@@ -832,13 +832,13 @@ msgid ""
 "Add a list of email recipients (separated by commas, semicolons or line "
 "breaks). They will not be converted into contacts."
 msgstr ""
-"Añada una lista de correos electrónicos (separados por comas, punto y comas "
-"o saltos de línea). No se convertirán en contactos."
+"Agregue una lista de correos electrónicos (separados por comas, punto y "
+"comas o saltos de línea). No se convertirán en contactos."
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_survey_view_form
 msgid "Add a question"
-msgstr "Añadir pregunta"
+msgstr "Agregar una pregunta"
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_survey_view_form
@@ -1051,8 +1051,8 @@ msgid ""
 "Attendee nickname, mainly used to identify them in the survey session "
 "leaderboard."
 msgstr ""
-"Apodo del asistente, principalmente utilizado para su identificación en la "
-"tabla de clasificación de la sesión de la encuesta."
+"Apodo del asistente, se utiliza para identificarle en la tabla de "
+"clasificación de la sesión de la encuesta."
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.user_input_session_manage_content
@@ -1382,7 +1382,7 @@ msgstr "Índice de color"
 #. module: survey
 #: model_terms:ir.actions.act_window,help:survey.action_survey_question_form
 msgid "Come back once you have added questions to your Surveys."
-msgstr "Regrese una vez que añada preguntas a su encuesta."
+msgstr "Regrese una vez que agregue preguntas a su encuesta."
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.question_result_comments
@@ -1444,8 +1444,8 @@ msgstr "Silla de conferencias"
 #, python-format
 msgid "Congratulations! You are now ready to collect feedback like a pro :-)"
 msgstr ""
-"¡Felicidades! Ya está listo para recopilar la retroalimentación como todo un"
-" profesional :)"
+"¡Felicidades! Ya está listo para recibir retroalimentación como todo un "
+"profesional. :)"
 
 #. module: survey
 #: model_terms:gamification.badge,description:survey.vendor_certification_badge
@@ -2289,8 +2289,8 @@ msgid ""
 "If checked, this question will be displayed only\n"
 "        if the specified conditional answer have been selected in a previous question"
 msgstr ""
-"Si se encuentra seleccionado, esta pregunta se mostrará solo\n"
-"        si la respuesta condicional especificada se ha seleccionado en una pregunta anterior"
+"Si se encuentra seleccionada, esta pregunta se mostrará solo\n"
+"        si seleccionó la respuesta condicional especificada en una pregunta anterior."
 
 #. module: survey
 #: model:ir.model.fields,help:survey.field_survey_survey__users_can_go_back
@@ -3248,8 +3248,7 @@ msgstr "Solo le falta una pregunta"
 #: model_terms:ir.ui.view,arch_db:survey.question_result_matrix
 msgid "Only show survey results having selected this answer"
 msgstr ""
-"Mostrar solo los resultados de la encuesta si se ha seleccionado esta "
-"respuesta"
+"Solo mostrar los resultados de la encuesta si se seleccionó esta respuesta"
 
 #. module: survey
 #. odoo-python
@@ -3500,8 +3499,8 @@ msgid ""
 "Please make sure you have at least one question in your survey. You also "
 "need at least one section if you chose the \"Page per section\" layout.<br/>"
 msgstr ""
-"Asegúrese de tener al menos una pregunta en su encuesta. También necesita al"
-" menos una sección si elige el diseño \"Página por sección\".<br/>"
+"Asegúrese de que su encuesta tenga al menos una pregunta. También necesita "
+"al menos una sección si elige el diseño \"Página por sección\".<br/>"
 
 #. module: survey
 #: model:survey.question,title:survey.vendor_certification_page_3
@@ -3667,7 +3666,7 @@ msgstr "Listo"
 #: code:addons/survey/static/src/js/tours/survey_tour.js:0
 #, python-format
 msgid "Ready to change the way you <b>gather data</b>?"
-msgstr "¿Está listo para cambiar su forma de <b>recolectar datos</b>?"
+msgstr "¿Está listo para cambiar su forma de <b>recopilar datos</b>?"
 
 #. module: survey
 #: model_terms:ir.actions.act_window,help:survey.action_survey_form
@@ -3921,8 +3920,7 @@ msgstr "Seleccione todos los productos que se venden por $ 100 o más"
 #. module: survey
 #: model:survey.question,title:survey.survey_demo_quiz_p3_q3
 msgid "Select trees that made more than 20K sales this year"
-msgstr ""
-"Seleccione los tipos de árboles que hayan superado 20,000 ventas este año"
+msgstr "Seleccione los árboles que han superado las 20,000 ventas este año"
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_invite_view_form
@@ -3932,7 +3930,7 @@ msgstr "Enviar"
 #. module: survey
 #: model:mail.template,description:survey.mail_template_certification
 msgid "Sent to participant if they succeeded the certification"
-msgstr "Se envía al participante si ha aprobado la certificación"
+msgstr "Se envía al participante si aprobó la certificación"
 
 #. module: survey
 #: model:mail.template,description:survey.mail_template_user_input_invite
@@ -3953,7 +3951,7 @@ msgstr "Código de sesión"
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_survey__session_link
 msgid "Session Link"
-msgstr "Enlace de sesión"
+msgstr "Enlace de la sesión"
 
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_survey__session_state
@@ -4042,8 +4040,8 @@ msgid ""
 "Some general information about you. It will be used internally for "
 "statistics only."
 msgstr ""
-"Algunos datos generales sobre usted. Se utilizará de manera interna, solo "
-"para estadísticas."
+"Algunos datos generales sobre usted. Se utilizarán de manera interna con "
+"fines estadísticos."
 
 #. module: survey
 #: model_terms:survey.question,description:survey.survey_demo_quiz_p2

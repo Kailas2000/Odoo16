@@ -325,16 +325,20 @@ class StockQuant(models.Model):
             'template': '/stock/static/xlsx/stock_quant.xlsx'
         }]
 
+    @api.model
+    def _get_forbidden_fields_write(self):
+        """ Returns a list of fields user can't edit when he want to edit a quant in `inventory_mode`."""
+        return ['product_id', 'location_id', 'lot_id', 'package_id', 'owner_id']
+
     def write(self, vals):
         """ Override to handle the "inventory mode" and create the inventory move. """
-        allowed_fields = self._get_inventory_fields_write()
-        if self._is_inventory_mode() and any(field for field in allowed_fields if field in vals.keys()):
+        forbidden_fields = self._get_forbidden_fields_write()
+        if self._is_inventory_mode() and any(field for field in forbidden_fields if field in vals.keys()):
             if any(quant.location_id.usage == 'inventory' for quant in self):
                 # Do nothing when user tries to modify manually a inventory loss
                 return
-            if any(field for field in vals.keys() if field not in allowed_fields):
-                raise UserError(_("Quant's editing is restricted, you can't do this operation."))
             self = self.sudo()
+            raise UserError(_("Quant's editing is restricted, you can't do this operation."))
         return super(StockQuant, self).write(vals)
 
     @api.ondelete(at_uninstall=False)
@@ -526,10 +530,26 @@ class StockQuant(models.Model):
 
     @api.constrains('quantity')
     def check_quantity(self):
-        for quant in self:
-            if quant.location_id.usage != 'inventory' and quant.lot_id and quant.product_id.tracking == 'serial' \
-                    and float_compare(abs(quant.quantity), 1, precision_rounding=quant.product_uom_id.rounding) > 0:
-                raise ValidationError(_('The serial number has already been assigned: \n Product: %s, Serial Number: %s') % (quant.product_id.display_name, quant.lot_id.name))
+        sn_quants = self.filtered(lambda q: q.product_id.tracking == 'serial' and q.location_id.usage != 'inventory' and q.lot_id)
+        if not sn_quants:
+            return
+        domain = expression.OR([
+            [('product_id', '=', q.product_id.id), ('location_id', '=', q.location_id.id), ('lot_id', '=', q.lot_id.id)]
+            for q in sn_quants
+        ])
+        groups = self.read_group(
+            domain,
+            ['quantity'],
+            ['product_id', 'location_id', 'lot_id'],
+            orderby='id',
+            lazy=False,
+        )
+        for group in groups:
+            product = self.env['product.product'].browse(group['product_id'][0])
+            lot = self.env['stock.lot'].browse(group['lot_id'][0])
+            uom = product.uom_id
+            if float_compare(abs(group['quantity']), 1, precision_rounding=uom.rounding) > 0:
+                raise ValidationError(_('The serial number has already been assigned: \n Product: %s, Serial Number: %s') % (product.display_name, lot.name))
 
     @api.constrains('location_id')
     def check_location_id(self):

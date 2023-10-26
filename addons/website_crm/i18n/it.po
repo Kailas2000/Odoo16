@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Martin Trigaux, 2022
+# Wil Odoo, 2023
 # Marianna Ciofani, 2023
 # 
 msgid ""
@@ -31,14 +32,14 @@ msgid "# Page Views"
 msgstr "N. visualizzazioni pagina"
 
 #. module: website_crm
-#. openerp-web
+#. odoo-javascript
 #: code:addons/website_crm/static/src/js/website_crm_editor.js:0
 #, python-format
 msgid "Assign leads/opportunities to a sales team."
 msgstr "Assegna i contatti/opportunità a un team di vendita."
 
 #. module: website_crm
-#. openerp-web
+#. odoo-javascript
 #: code:addons/website_crm/static/src/js/website_crm_editor.js:0
 #, python-format
 msgid "Assign leads/opportunities to a salesperson."
@@ -97,18 +98,32 @@ msgid "Page views"
 msgstr "Visite alla pagina"
 
 #. module: website_crm
-#. openerp-web
+#. odoo-javascript
+#: code:addons/website_crm/static/src/js/website_crm_editor.js:0
+#, python-format
+msgid "Phone Number"
+msgstr "Numero di telefono"
+
+#. module: website_crm
+#. odoo-javascript
 #: code:addons/website_crm/static/src/js/website_crm_editor.js:0
 #, python-format
 msgid "Sales Team"
 msgstr "Team di vendita"
 
 #. module: website_crm
-#. openerp-web
+#. odoo-javascript
 #: code:addons/website_crm/static/src/js/website_crm_editor.js:0
 #, python-format
 msgid "Salesperson"
 msgstr "Addetto vendite"
+
+#. module: website_crm
+#. odoo-javascript
+#: code:addons/website_crm/static/src/js/website_crm_editor.js:0
+#, python-format
+msgid "Subject"
+msgstr "Oggetto"
 
 #. module: website_crm
 #: model:ir.model.fields,field_description:website_crm.field_crm_lead__visitor_ids
@@ -134,3 +149,31 @@ msgstr "Modulo di contatto del sito web"
 #: model:ir.model,name:website_crm.model_website_visitor
 msgid "Website Visitor"
 msgstr "Visitatore sito web"
+
+#. module: website_crm
+#. odoo-javascript
+#: code:addons/website_crm/static/src/js/website_crm_editor.js:0
+#, python-format
+msgid "Your Company"
+msgstr "La tua azienda"
+
+#. module: website_crm
+#. odoo-javascript
+#: code:addons/website_crm/static/src/js/website_crm_editor.js:0
+#, python-format
+msgid "Your Email"
+msgstr "E-mail"
+
+#. module: website_crm
+#. odoo-javascript
+#: code:addons/website_crm/static/src/js/website_crm_editor.js:0
+#, python-format
+msgid "Your Name"
+msgstr "Nome"
+
+#. module: website_crm
+#. odoo-javascript
+#: code:addons/website_crm/static/src/js/website_crm_editor.js:0
+#, python-format
+msgid "Your Question"
+msgstr "La tua domanda"

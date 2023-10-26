@@ -258,7 +258,7 @@ msgstr ""
 "            <tr><td style=\"padding:15px 20px 10px 20px;\">\n"
 "                <p>Lieber <span t-out=\"object.partner_id.name or 'participant'\">Teilnehmer</span></p>\n"
 "                <p>\n"
-"                    Im Anhang finden Sie Ihre Zertifizierung für die\n"
+"                    im Anhang finden Sie Ihre Zertifizierung für\n"
 "                        <strong t-out=\"object.survey_id.display_name or ''\">Möbelherstellung</strong>\n"
 "                    .\n"
 "                </p>\n"
@@ -1799,7 +1799,7 @@ msgstr "Schublade"
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_survey_view_kanban
 msgid "Dropdown menu"
-msgstr "Dropdownmenu"
+msgstr "Drop-down-Menü"
 
 #. module: survey
 #: model_terms:ir.ui.view,arch_db:survey.survey_survey_view_kanban
@@ -2160,7 +2160,7 @@ msgstr "Wie viele Jahre dauerte der 100-jährige Krieg?"
 #. module: survey
 #: model:survey.question,title:survey.vendor_certification_page_2_question_1
 msgid "How much do we sell our Cable Management Box?"
-msgstr "Zu welchem Preis verkaufen wir unsere Cable Management Box?"
+msgstr "Zu welchem Preis verkaufen wir unsere Kabelverwaltungsbox?"
 
 #. module: survey
 #: model:survey.question,title:survey.survey_demo_quiz_p3_q5
@@ -2765,7 +2765,7 @@ msgstr "Hauptanhang"
 #: model:ir.model.fields,field_description:survey.field_survey_question__constr_mandatory
 #: model_terms:ir.ui.view,arch_db:survey.survey_question_form
 msgid "Mandatory Answer"
-msgstr "Pflichtfeld"
+msgstr "Antwort erforderlich"
 
 #. module: survey
 #: model:ir.model.fields.selection,name:survey.selection__survey_question__question_type__matrix
@@ -4324,7 +4324,7 @@ msgstr "Wiederholen"
 #: model_terms:ir.ui.view,arch_db:survey.survey_survey_view_form
 #: model_terms:ir.ui.view,arch_db:survey.survey_survey_view_kanban
 msgid "Test"
-msgstr "Test"
+msgstr "Testen"
 
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_user_input__test_entry
@@ -5112,7 +5112,7 @@ msgstr "Was benötigt man, um eine Odoo-Umfrage zu bestehen?"
 #: code:addons/survey/models/survey_survey_template.py:0
 #, python-format
 msgid "What is a frequent mistake public speakers do?"
-msgstr "Was ist ein häufiger Fehler, den öffentliche Redner machen?"
+msgstr "Was ist ein häufiger Fehler, den öffentliche Referenten machen?"
 
 #. module: survey
 #. odoo-python

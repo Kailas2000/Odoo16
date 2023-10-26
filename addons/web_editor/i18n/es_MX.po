@@ -3,9 +3,9 @@
 # 	* web_editor
 # 
 # Translators:
-# Lucia Pacheco, 2022
 # Martin Trigaux, 2023
 # Braulio D. López Vázquez <bdl@odoo.com>, 2023
+# Lucia Pacheco, 2023
 # Fernanda Alvarez, 2023
 # 
 msgid ""
@@ -2486,7 +2486,7 @@ msgstr "Buscar una imagen"
 #. module: web_editor
 #: model_terms:ir.ui.view,arch_db:web_editor.snippets
 msgid "Search for a block (e.g. numbers, image wall, ...)"
-msgstr "Buscar un bloque (por ejemplo, números, muro de imágenes, etc.)"
+msgstr "Busque un bloque (por ejemplo, números, muro de imágenes, etc.)"
 
 #. module: web_editor
 #. odoo-javascript
@@ -2971,7 +2971,7 @@ msgstr ""
 #: code:addons/web_editor/static/src/js/editor/odoo-editor/src/OdooEditor.js:0
 #, python-format
 msgid "To-do"
-msgstr "Pendiente"
+msgstr "Actividades pendientes"
 
 #. module: web_editor
 #: model_terms:ir.ui.view,arch_db:web_editor.snippet_options_image_optimization_widgets

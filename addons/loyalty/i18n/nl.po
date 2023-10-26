@@ -3,9 +3,9 @@
 # 	* loyalty
 # 
 # Translators:
-# Martin Trigaux, 2022
 # Gunther Clauwaert <gclauwae@hotmail.com>, 2022
 # Erwin van der Ploeg <erwin@odooexperts.nl>, 2023
+# Martin Trigaux, 2023
 # Jolien De Paepe, 2023
 # 
 msgid ""
@@ -54,7 +54,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"        Toon in webportaal, kassa klantticket, eCommerce kassa, het aantal beschikbare en gebruikt punten per beloning.\n"
+"        Toon in webportaal, kassa klantticket, E-commerce kassa, het aantal beschikbare en gebruikt punten per beloning.\n"
 "        "
 
 #. module: loyalty
@@ -721,7 +721,7 @@ msgstr "Kortingsbon"
 #. module: loyalty
 #: model:ir.actions.report,name:loyalty.report_loyalty_card
 msgid "Coupon Code"
-msgstr "Code kortingsbon"
+msgstr "Kortingsbon"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__coupon_count
@@ -968,7 +968,7 @@ msgid ""
 "Drive repeat purchases by sending a unique, single-use coupon code for the "
 "next purchase when a customer buys something in your store."
 msgstr ""
-"Stimuleer herhalingsaankopen door een unieke kortingsboncode voor eenmalig "
+"Stimuleer herhalingsaankopen door een unieke kortingscode voor eenmalig "
 "gebruik te sturen voor de volgende aankoop wanneer een klant iets in je "
 "winkel koopt."
 
@@ -1085,8 +1085,8 @@ msgid ""
 "Point of Sale or regular orders to claim the Reward. You can define "
 "constraints on its usage through conditional rule."
 msgstr ""
-"Kortingsboncodes handmatig genereren & delen. Het kan worden gebruikt in "
-"eCommerce, Kassa of reguliere bestellingen om de beloning te claimen. Je "
+"Kortingscodes handmatig genereren & delen. Het kan worden gebruikt in "
+"E-commerce, Kassa of reguliere bestellingen om de beloning te claimen. Je "
 "kunt beperkingen op het gebruik ervan definiëren door middel van een "
 "voorwaardelijke regel."
 
@@ -1183,7 +1183,7 @@ msgid ""
 "Grant 1 credit for each item bought then reward the customer with Y items in"
 " exchange of X credits."
 msgstr ""
-"Verleen 1 krediet voor elk gekocht item en beloon de klant met Y-items in "
+"Verleen 1 credit voor elk gekocht item en beloon de klant met Y-items in "
 "ruil voor X credits."
 
 #. module: loyalty
@@ -1534,6 +1534,11 @@ msgstr "Productlabel"
 #: model:ir.model,name:loyalty.model_product_product
 msgid "Product Variant"
 msgstr "Productvariant"
+
+#. module: loyalty
+#: model:ir.model.fields,help:loyalty.field_loyalty_program__discount_product_id
+msgid "Product used in the sales order to apply the discount."
+msgstr "Producten gebruikt in het verkooporder om korting op toe te passen."
 
 #. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_reward__discount_line_product_id
@@ -1954,7 +1959,7 @@ msgstr ""
 #. module: loyalty
 #: model:mail.template,report_name:loyalty.mail_template_loyalty_card
 msgid "Your Coupon Code"
-msgstr "Je kortingsboncode"
+msgstr "Je kortingscode"
 
 #. module: loyalty
 #: model:mail.template,report_name:loyalty.mail_template_gift_card

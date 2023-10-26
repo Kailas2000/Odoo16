@@ -259,7 +259,8 @@ class AccountEdiXmlCII(models.AbstractModel):
         mail = _find_value(f"//ram:{role}//ram:URIID[@schemeID='SMTP']")
         vat = _find_value(f"//ram:{role}/ram:SpecifiedTaxRegistration/ram:ID")
         phone = _find_value(f"//ram:{role}/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber")
-        self._import_retrieve_and_fill_partner(invoice, name=name, phone=phone, mail=mail, vat=vat)
+        country_code = _find_value(f'//ram:{role}/ram:PostalTradeAddress//ram:CountryID')
+        self._import_retrieve_and_fill_partner(invoice, name=name, phone=phone, mail=mail, vat=vat, country_code=country_code)
 
         # ==== currency_id ====
 
@@ -311,7 +312,7 @@ class AccountEdiXmlCII(models.AbstractModel):
 
         invoice_date_node = tree.find('./{*}ExchangedDocument/{*}IssueDateTime/{*}DateTimeString')
         if invoice_date_node is not None and invoice_date_node.text:
-            date_str = invoice_date_node.text
+            date_str = invoice_date_node.text.strip()
             date_obj = datetime.strptime(date_str, DEFAULT_FACTURX_DATE_FORMAT)
             invoice.invoice_date = date_obj.strftime(DEFAULT_SERVER_DATE_FORMAT)
 
@@ -319,7 +320,7 @@ class AccountEdiXmlCII(models.AbstractModel):
 
         invoice_date_due_node = tree.find('.//{*}SpecifiedTradePaymentTerms/{*}DueDateDateTime/{*}DateTimeString')
         if invoice_date_due_node is not None and invoice_date_due_node.text:
-            date_str = invoice_date_due_node.text
+            date_str = invoice_date_due_node.text.strip()
             date_obj = datetime.strptime(date_str, DEFAULT_FACTURX_DATE_FORMAT)
             invoice.invoice_date_due = date_obj.strftime(DEFAULT_SERVER_DATE_FORMAT)
 

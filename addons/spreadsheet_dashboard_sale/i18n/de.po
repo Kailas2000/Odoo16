@@ -217,7 +217,7 @@ msgstr "Zeitraum"
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #, python-format
 msgid "Previous"
-msgstr "Zurück"
+msgstr "Vorherig"
 
 #. module: spreadsheet_dashboard_sale
 #. openerp-web
@@ -290,7 +290,7 @@ msgstr "Verkaufsanalyse nach Kunden"
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #, python-format
 msgid "Sales Analysis by Customer Country"
-msgstr "Umsatzanalyse nach Kundenland"
+msgstr "Verkaufsanalyse nach Kundenland"
 
 #. module: spreadsheet_dashboard_sale
 #. openerp-web
@@ -367,7 +367,7 @@ msgstr "Vertriebsmitarbeiter"
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #, python-format
 msgid "Source"
-msgstr "Herkunft"
+msgstr "Quelle"
 
 #. module: spreadsheet_dashboard_sale
 #. openerp-web
@@ -451,7 +451,7 @@ msgstr "Aufträge insgesamt"
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #, python-format
 msgid "Total quotations"
-msgstr "Angebote gesamt"
+msgstr "Angebote insgesamt"
 
 #. module: spreadsheet_dashboard_sale
 #. openerp-web

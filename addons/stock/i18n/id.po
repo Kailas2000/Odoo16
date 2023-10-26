@@ -3792,17 +3792,18 @@ msgstr "Domain tidak sah sebelah kiri operator %s"
 
 #. module: stock
 #. odoo-python
-#: code:addons/stock/models/product.py:0
+#: code:addons/stock/models/product.py:0 code:addons/stock/models/product.py:0
 #, python-format
 msgid "Invalid domain operator %s"
 msgstr "Domain tidak sah untuk operator%s"
 
 #. module: stock
 #. odoo-python
-#: code:addons/stock/models/product.py:0
+#: code:addons/stock/models/product.py:0 code:addons/stock/models/product.py:0
 #, python-format
-msgid "Invalid domain right operand %s"
-msgstr "Domain tidak sah sebelah kanan operator %s"
+msgid "Invalid domain right operand '%s'. It must be of type Integer/Float"
+msgstr ""
+"Domain right operand '%s' tidak valid. Harus merupakan tipe Integer/Float"
 
 #. module: stock
 #. odoo-python
@@ -5184,7 +5185,7 @@ msgstr "Jumlah pergerakkan stok masuk dalam 12 bulan terakhir"
 #: model:ir.model.fields,help:stock.field_stock_picking__message_needaction_counter
 #: model:ir.model.fields,help:stock.field_stock_scrap__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Jumlah pesan yang membutuhkan tindakan"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_lot__message_has_error_counter
@@ -5874,7 +5875,7 @@ msgstr "Operasi yang mendahului"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_warehouse_orderpoint__route_id
 msgid "Preferred Route"
-msgstr ""
+msgstr "Rute yang Dipilih"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_product_replenish__route_ids
@@ -7417,6 +7418,13 @@ msgstr "Sequence picking"
 #, python-format
 msgid "Sequence return"
 msgstr "Sequence return"
+
+#. module: stock
+#. odoo-python
+#: code:addons/stock/models/stock_picking.py:0
+#, python-format
+msgid "Sequences %s already exist."
+msgstr "Sequence %s sudah tersedia."
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move__lot_ids
@@ -10010,10 +10018,10 @@ msgstr ""
 #. odoo-python
 #: code:addons/stock/models/stock_move.py:0
 #, python-format
-msgid "You cannot split a stock move that has been set to 'Done'."
+msgid "You cannot split a stock move that has been set to 'Done' or 'Cancel'."
 msgstr ""
 "Anda tidak dapat membelah pergerakkan stok yang sudah ditetapkan sebagai "
-"'Selesai'."
+"'Selesai' atau 'Dibatalkan'."
 
 #. module: stock
 #. odoo-python

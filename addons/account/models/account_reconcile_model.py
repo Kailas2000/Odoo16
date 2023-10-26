@@ -721,7 +721,7 @@ class AccountReconcileModel(models.Model):
 
             # Exact tokens.
             if len(tokens) == 1:
-                exact_tokens.append(tokens[0])
+                exact_tokens.append(text_value)
         return numerical_tokens, exact_tokens, text_tokens
 
     def _get_invoice_matching_amls_candidates(self, st_line, partner):
@@ -786,7 +786,7 @@ class AccountReconcileModel(models.Model):
                         {table_alias}.{field} AS token
                     FROM {tables}
                     JOIN account_move account_move_line__move_id ON account_move_line__move_id.id = account_move_line.move_id
-                    WHERE {where_clause} AND {table_alias}.{field} IS NOT NULL
+                    WHERE {where_clause} AND COALESCE({table_alias}.{field}, '') != ''
                 ''')
                 all_params += where_params
 

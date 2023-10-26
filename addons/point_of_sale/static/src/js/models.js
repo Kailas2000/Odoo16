@@ -472,12 +472,39 @@ class PosGlobalState extends PosModel {
                 }
             }
         }
+        if(!missingProductIds.size) return;
         const products = await this.env.services.rpc({
             model: 'pos.session',
             method: 'get_pos_ui_product_product_by_params',
             args: [odoo.pos_session_id, {domain: [['id', 'in', [...missingProductIds]]]}],
         });
+        await this._loadMissingPricelistItems(products);
         this._loadProductProduct(products);
+    }
+    async _loadMissingPricelistItems(products) {
+        if(!products.length) return;
+        const product_tmpl_ids = products.map(product => product.product_tmpl_id[0]);
+        const product_ids = products.map(product => product.id);
+
+        const pricelistItems = await this.env.services.rpc({
+            model: 'pos.session',
+            method: 'get_pos_ui_product_pricelist_item_by_product',
+            args: [odoo.pos_session_id, product_tmpl_ids, product_ids],
+        });
+
+        // Merge the loaded pricelist items with the existing pricelists
+        // Prioritizing the addition of newly loaded pricelist items to the start of the existing pricelists.
+        // This ensures that the order reflects the desired priority of items in the pricelistItems array.
+        // E.g. The order in the items should be: [product-pricelist-item, product-template-pricelist-item, category-pricelist-item, global-pricelist-item].
+        // for reference check order of the Product Pricelist Item model
+        for (const pricelist of this.pricelists) {
+            const itemIds = new Set(pricelist.items.map(item => item.id));
+
+            const _pricelistItems = pricelistItems.filter(item => {
+                return item.pricelist_id[0] === pricelist.id && !itemIds.has(item.id);
+            });
+            pricelist.items = [..._pricelistItems, ...pricelist.items];
+        }
     }
     // load the partners based on the ids
     async _loadPartners(partnerIds) {
@@ -517,6 +544,7 @@ class PosGlobalState extends PosModel {
                     limit: this.config.limited_products_amount,
                 }],
             }, { shadow: true });
+            await this._loadMissingPricelistItems(products);
             this._loadProductProduct(products);
             page += 1;
         } while(products.length == this.config.limited_products_amount);
@@ -809,9 +837,53 @@ class PosGlobalState extends PosModel {
                 self.validated_orders_name_server_id_map[server_ids[i].pos_reference] = server_ids[i].id;
             }
             return server_ids;
+        }).catch(function(error) {
+            if (self._isRPCError(error)) {
+                if (orders.length > 1) {
+                    return self._flush_orders_retry(orders, options);
+                } else {
+                    self.set_synch('error');
+                    throw error;
+                }
+            } else {
+                self.set_synch('disconnected');
+                throw error;
+            }
         }).finally(function() {
             self._after_flush_orders(orders);
         });
+    }
+    // Attempts to send the orders to the server one by one if an RPC error is encountered.
+    async _flush_orders_retry(orders, options) {
+
+        let successfulOrders = 0;
+        let lastError;
+        let serverIds = [];
+
+        for (let order of orders) {
+            try {
+                let server_ids = await this._save_to_server([order], options);
+                successfulOrders++;
+                this.validated_orders_name_server_id_map[server_ids[0].pos_reference] = server_ids[0].id;
+                serverIds.push(server_ids[0]);
+            } catch (err) {
+                lastError = err;
+            }
+        }
+
+        if (successfulOrders === orders.length) {
+            this.set_synch('connected');
+            return serverIds;
+        }
+        if (this._isRPCError(lastError)) {
+            this.set_synch('error');
+        } else {
+            this.set_synch('disconnected');
+        }
+        throw lastError;
+    }
+    _isRPCError(err) {
+        return err.message && err.message.name === 'RPC_ERROR';
     }
     /**
      * Hook method after _flush_orders resolved or rejected.
@@ -1343,17 +1415,8 @@ class PosGlobalState extends PosModel {
             method: 'get_pos_ui_product_product_by_params',
             args: [odoo.pos_session_id, {domain: [['id', 'in', ids]]}],
         });
+        await this._loadMissingPricelistItems(product);
         this._loadProductProduct(product);
-    }
-    async refreshTotalDueOfPartner(partner) {
-        const partnerWithUpdatedTotalDue = await this.env.services.rpc({
-            model: 'res.partner',
-            method: 'search_read',
-            fields: ['total_due'],
-            domain: [['id', '=', partner.id]],
-        });
-        this.db.update_partners(partnerWithUpdatedTotalDue);
-        return partnerWithUpdatedTotalDue;
     }
     doNotAllowRefundAndSales() {
         return false;
@@ -1900,6 +1963,7 @@ class Orderline extends PosModel {
             pack_lot_lines:      this.get_lot_lines(),
             customer_note:      this.get_customer_note(),
             taxed_lst_unit_price: this.get_taxed_lst_unit_price(),
+            unitDisplayPriceBeforeDiscount: this.getUnitDisplayPriceBeforeDiscount(),
         };
     }
     generate_wrapped_product_name() {
@@ -2118,7 +2182,7 @@ class Orderline extends PosModel {
         return this.compute_fixed_price(this.get_lst_price());
     }
     get_lst_price(){
-        return this.product.get_price(this.pos.default_pricelist, 1, 0)
+        return this.product.get_price(this.pos.default_pricelist, 1, this.price_extra)
     }
     set_lst_price(price){
       this.order.assert_editable();
@@ -2290,7 +2354,7 @@ class Payment extends PosModel {
             payment_method_id: this.payment_method.id,
             amount: this.get_amount(),
             payment_status: this.payment_status,
-            can_be_reversed: this.can_be_resersed,
+            can_be_reversed: this.can_be_reversed,
             ticket: this.ticket,
             card_type: this.card_type,
             cardholder_name: this.cardholder_name,
@@ -2410,6 +2474,7 @@ class Order extends PosModel {
             if (fiscal_position) {
                 this.fiscal_position = fiscal_position;
             } else {
+                this.fiscal_position_not_found = true;
                 console.error('ERROR: trying to load a fiscal position not available in the pos');
             }
         }
@@ -2522,7 +2587,7 @@ class Order extends PosModel {
                 return paymentline.export_for_printing();
             });
         let partner = this.partner;
-        let cashier = this.pos.get_cashier();
+        let cashier = this.cashier;
         let company = this.pos.company;
         let date    = new Date();
 

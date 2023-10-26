@@ -60,8 +60,9 @@ class RentalVehicle(models.Model):
             'context': "{'create': False}"
         }
 
+    @api.depends('vehicle_id')
     def compute_count(self):
         """counting the number of request inside smart button"""
         for record in self:
             record.rent_request = self.env['rent.request'].search_count(
-                [('vehicle_id', '=', self.id)])
+                [('vehicle_id', '=', record.id)])

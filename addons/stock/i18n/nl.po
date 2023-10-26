@@ -989,13 +989,13 @@ msgstr "Altijd"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
 msgid "Annual Inventory Day and Month"
-msgstr "Dag en maand jaarlijkse inventarisatie"
+msgstr "Dag en maand jaarlijkse voorraadtelling"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_company__annual_inventory_month
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__annual_inventory_month
 msgid "Annual Inventory Month"
-msgstr "Maand jaarlijkse inventarisatie"
+msgstr "Maand jaarlijkse voorraadtelling"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_res_company__annual_inventory_month
@@ -1004,9 +1004,9 @@ msgid ""
 "Annual inventory month for products not in a location with a cyclic "
 "inventory date. Set to no month if no automatic annual inventory."
 msgstr ""
-"Maand jaarlijkse inventarisatie voor producten die zich niet op een locatie "
-"met een cyclische voorraaddatum bevinden. Stel in op geen maand als er geen "
-"automatische jaarlijkse inventarisatie is."
+"Maand jaarlijkse voorraadtelling voor producten die zich niet op een locatie"
+" met een cyclische voorraaddatum bevinden. Stel in op geen maand als er geen"
+" automatische jaarlijkse voorraadtelling is."
 
 #. module: stock
 #. odoo-python
@@ -2058,7 +2058,7 @@ msgid ""
 "setting"
 msgstr ""
 "Door een nieuw magazijn aan te maken, wordt automatisch de instelling "
-"voorraadlocaties geactiveerd"
+"Opslaglocaties geactiveerd"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_picking__date
@@ -2193,7 +2193,7 @@ msgstr "Datum van overdracht"
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_location__last_inventory_date
 msgid "Date of the last inventory at this location."
-msgstr "Datum van de laatste inventarisatie van deze locatie."
+msgstr "Datum van de laatste voorraadtelling van deze locatie."
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move__reservation_date
@@ -2203,7 +2203,7 @@ msgstr "Datum om te reserveren"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
 msgid "Day and month that annual inventory counts should occur."
-msgstr "Dag en maand waarop jaarlijkse inventarisatie moet plaatsvinden."
+msgstr "Dag en maand waarop jaarlijkse voorraadtelling moet plaatsvinden."
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_company__annual_inventory_day
@@ -2218,7 +2218,7 @@ msgid ""
 "Day of the month when the annual inventory should occur. If zero or negative, then the first day of the month will be selected instead.\n"
 "        If greater than the last day of a month, then the last day of the month will be selected instead."
 msgstr ""
-"Dag van de maand waarop de jaarlijkse inventarisatie moet plaatsvinden. Indien nul of negatief, dan wordt in plaats daarvan de eerste dag van de maand geselecteerd.\n"
+"Dag van de maand waarop de jaarlijkse voorraadtelling moet plaatsvinden. Indien nul of negatief, dan wordt in plaats daarvan de eerste dag van de maand geselecteerd.\n"
 "        Indien groter dan de laatste dag van een maand, wordt in plaats daarvan de laatste dag van de maand geselecteerd."
 
 #. module: stock
@@ -3824,17 +3824,17 @@ msgstr "Ongeldig domein linker operand %s"
 
 #. module: stock
 #. odoo-python
-#: code:addons/stock/models/product.py:0
+#: code:addons/stock/models/product.py:0 code:addons/stock/models/product.py:0
 #, python-format
 msgid "Invalid domain operator %s"
 msgstr "Ongeldig domein operator %s"
 
 #. module: stock
 #. odoo-python
-#: code:addons/stock/models/product.py:0
+#: code:addons/stock/models/product.py:0 code:addons/stock/models/product.py:0
 #, python-format
-msgid "Invalid domain right operand %s"
-msgstr "Ongeldig domein rechter operand %s"
+msgid "Invalid domain right operand '%s'. It must be of type Integer/Float"
+msgstr "Ongeldige rechter operand '%s'. Het moet een geheel getal/float zijn"
 
 #. module: stock
 #. odoo-python
@@ -3898,7 +3898,7 @@ msgstr "Voorraadaanpassingen"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.report_inventory
 msgid "Inventory Count Sheet"
-msgstr "Inventarisatielijst"
+msgstr "Voorraadtellijst"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_request_count__inventory_date
@@ -4854,7 +4854,7 @@ msgstr "Verplaatsingen"
 #: model:ir.actions.act_window,name:stock.stock_move_line_action
 #: model:ir.ui.menu,name:stock.stock_move_line_menu
 msgid "Moves History"
-msgstr "Verplaatsinggeschiedenis"
+msgstr "Geschiedenis"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_warehouse_orderpoint__group_id
@@ -5016,7 +5016,7 @@ msgstr "Volgende activiteit type"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_location__next_inventory_date
 msgid "Next Expected Inventory"
-msgstr "Volgende verwachte voorraad"
+msgstr "Volgende verwachte voorraadtelling"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_quant__inventory_date
@@ -7369,8 +7369,8 @@ msgid ""
 "Send an automatic confirmation SMS Text Message when Delivery Orders are "
 "done"
 msgstr ""
-"Stuur een automatische bevestiging per SMS tekstbericht als de leveringen "
-"gereed zijn"
+"Stuur een automatische bevestiging per SMS bericht als de leveringen gereed "
+"zijn"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
@@ -7471,6 +7471,13 @@ msgstr "Reeks picking"
 #, python-format
 msgid "Sequence return"
 msgstr "Reeks retour"
+
+#. module: stock
+#. odoo-python
+#: code:addons/stock/models/stock_picking.py:0
+#, python-format
+msgid "Sequences %s already exist."
+msgstr "Volgnummers %s bestaan reeds."
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move__lot_ids
@@ -7930,7 +7937,7 @@ msgstr "Voorraadverplaatsing"
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_move_tree
 msgid "Stock Moves"
-msgstr "Voorraadverplaatsingen"
+msgstr "Verplaatsingen"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_move_graph
@@ -8116,7 +8123,7 @@ msgstr "Opslagcategorie capaciteit"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_res_config_settings__group_stock_multi_locations
 msgid "Storage Locations"
-msgstr "Opslaglocatie"
+msgstr "Opslaglocaties"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_res_config_settings__group_stock_multi_locations
@@ -10085,10 +10092,10 @@ msgstr ""
 #. odoo-python
 #: code:addons/stock/models/stock_move.py:0
 #, python-format
-msgid "You cannot split a stock move that has been set to 'Done'."
+msgid "You cannot split a stock move that has been set to 'Done' or 'Cancel'."
 msgstr ""
-"Het is niet mogelijk een voorraadverplaatsing te splitsen welke in de "
-"'Gereed' fase is."
+"Je kan een voorraadverplaatsing die ingesteld is op 'Gereed' of 'Annuleren' "
+"niet splitsen."
 
 #. module: stock
 #. odoo-python

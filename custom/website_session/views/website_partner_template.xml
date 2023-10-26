@@ -87,3 +87,18 @@
         </t>
     </template>
 </odoo>
+
+<!--       start: function () {-->
+<!--           var self = this;-->
+<!--           rpc.query({-->
+<!--               route: '/top_rental',-->
+<!--           }).then(function (result) {-->
+<!--                console.log(result)-->
+<!--               var rendered_html = QWeb.render('vehicle_view_template', 'result':data);-->
+<!--                $('#data').html(rendered_html)-->
+<!--           });-->
+<!--       },-->
+<!--   });-->
+<!--   PublicWidget.registry.vehicle_view = Dynamic;-->
+<!--   return Dynamic-->
+<!--});-->

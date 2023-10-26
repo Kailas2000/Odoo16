@@ -9,7 +9,6 @@
 # Topi Aura <topi@aurat.fi>, 2022
 # Sanna Edelman <direct@generare.com>, 2022
 # Pekka Ikonen, 2022
-# Teija Hölttä <teija.holtta@gmail.com>, 2022
 # Teemu Tiitinen, 2022
 # Jussi Lehto <jussi@gulfeo.com>, 2022
 # Kari Lindgren <karisatu@gmail.com>, 2022
@@ -34,6 +33,7 @@
 # Svante Suominen <svante.suominen@web-veistamo.fi>, 2023
 # Martin Trigaux, 2023
 # Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2023
+# Teija Hölttä <teija.holtta@gmail.com>, 2023
 # Ossi Mantylahti <ossi.mantylahti@obs-solutions.fi>, 2023
 # 
 msgid ""
@@ -54,7 +54,7 @@ msgstr ""
 #: code:addons/website/static/src/snippets/s_image_gallery/options.js:0
 #, python-format
 msgid " Add Images"
-msgstr "Lisää kuvia"
+msgstr " Lisää kuvia"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.bs_debug_view
@@ -758,7 +758,7 @@ msgid ""
 "                                        How to create my Plausible Shared Link"
 msgstr ""
 "<i class=\"fa fa-arrow-right\"/>\n"
-"                                        Miten luon uskottavan jaetun linkin?"
+"                                        Näin luot luon uskottavan jaetun linkin"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.res_config_settings_view_form
@@ -3874,7 +3874,7 @@ msgstr "Näytä verkkosivun kuvaus"
 #: model:ir.model.fields,help:website.field_res_config_settings__website_logo
 #: model:ir.model.fields,help:website.field_website__logo
 msgid "Display this logo on the website."
-msgstr "Näytä logo verkkosivuilla"
+msgstr "Näytä logo verkkosivuilla."
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.res_config_settings_view_form
@@ -5546,7 +5546,7 @@ msgstr "Kuvaseinä"
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.snippet_options
 msgid "In"
-msgstr " "
+msgstr "Jossa"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.website_pages_kanban_view
@@ -7145,6 +7145,13 @@ msgid "No support"
 msgstr "Ei tukea"
 
 #. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/systray_items/website_switcher.js:0
+#, python-format
+msgid "No website domain configured for this website."
+msgstr "Tälle verkkosivustolle ei ole määritetty verkkotunnusta."
+
+#. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_chart_options
 #: model_terms:ir.ui.view,arch_db:website.s_countdown_options
 #: model_terms:ir.ui.view,arch_db:website.s_image_gallery_options
@@ -7716,6 +7723,13 @@ msgstr "Kuvio"
 #: model_terms:ir.ui.view,arch_db:website.s_process_steps
 msgid "Pay"
 msgstr "Maksa"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/js/form_editor_registry.js:0
+#, python-format
+msgid "Phone Number"
+msgstr "Puhelinnumero"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_mega_menu_thumbnails
@@ -9261,6 +9275,13 @@ msgid "Sub Menus"
 msgstr "Alivalikot"
 
 #. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/js/form_editor_registry.js:0
+#, python-format
+msgid "Subject"
+msgstr "Aihe"
+
+#. module: website
 #: model_terms:ir.ui.view,arch_db:website.contactus
 #: model_terms:ir.ui.view,arch_db:website.s_website_form
 msgid "Submit"
@@ -9876,6 +9897,24 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website.report_viewhierarchy_children
 msgid "This view arch has been modified"
 msgstr "Tätä näkymä-archia on muutettu"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/systray_items/website_switcher.js:0
+#, python-format
+msgid ""
+"This website does not have a domain configured. To avoid unexpected behaviours during website edition, we recommend closing (or refreshing) other browser tabs.\n"
+"To remove this message please set a domain in your website settings"
+msgstr ""
+"Tälle verkkosivustolle ei ole määritetty verkkotunnusta. Jotta vältät odottamattomat toiminnot verkkosivuston muokkauksen aikana, suosittelemme sulkemaan (tai päivittämään) muut selaimen välilehdet.\n"
+"Poista tämä viesti määrittämällä verkkotunnus verkkosivuston asetuksissa"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/systray_items/website_switcher.xml:0
+#, python-format
+msgid "This website does not have a domain configured."
+msgstr "Tälle verkkosivustolle ei ole määritetty verkkotunnusta."
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_image_gallery_options
@@ -11360,6 +11399,13 @@ msgid "You'll be able to create your pages later on."
 msgstr "Voit luoda sivut myöhemmin."
 
 #. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/js/form_editor_registry.js:0
+#, python-format
+msgid "Your Company"
+msgstr "Oma yritys"
+
+#. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_dynamic_snippet_template
 msgid ""
 "Your Dynamic Snippet will be displayed here... This message is displayed "
@@ -11367,6 +11413,27 @@ msgid ""
 msgstr ""
 "Dynaaminen pätkäsi näytetään tässä... Tämä viesti näytetään, koska et ole "
 "antanut sekä suodatinta että mallia käytettäväksi.<br/>"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/js/form_editor_registry.js:0
+#, python-format
+msgid "Your Email"
+msgstr "Sähköpostisi"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/js/form_editor_registry.js:0
+#, python-format
+msgid "Your Name"
+msgstr "Nimesi"
+
+#. module: website
+#. odoo-javascript
+#: code:addons/website/static/src/js/form_editor_registry.js:0
+#, python-format
+msgid "Your Question"
+msgstr "Oma kysymys"
 
 #. module: website
 #. odoo-javascript
@@ -11853,7 +11920,7 @@ msgstr "paikanvaraaja"
 #: code:addons/website/static/src/components/website_loader/website_loader.xml:0
 #, python-format
 msgid "pointer to build the perfect page in 7 steps."
-msgstr "vinkit täydellisen sivun rakentamiseen seitsemällä askeleella"
+msgstr "vinkit täydellisen sivun rakentamiseen seitsemällä askeleella."
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.snippets

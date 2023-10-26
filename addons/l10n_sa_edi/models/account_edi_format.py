@@ -281,7 +281,7 @@ class AccountEdiFormat(models.Model):
         fields_to_check = []
         if any(tax.l10n_sa_exemption_reason_code in ('VATEX-SA-HEA', 'VATEX-SA-EDU') for tax in
                invoice.invoice_line_ids.filtered(
-                   lambda line: not line.display_type).tax_ids):
+                   lambda line: line.display_type == 'product').tax_ids):
             fields_to_check += [
                 ('l10n_sa_additional_identification_scheme',
                  _('Additional Identification Scheme is required for the Buyer if tax exemption reason is either '
@@ -403,7 +403,7 @@ class AccountEdiFormat(models.Model):
         if invoice.commercial_partner_id == invoice.company_id.partner_id.commercial_partner_id:
             errors.append(_("- You cannot post invoices where the Seller is the Buyer"))
 
-        if not all(line.tax_ids for line in invoice.invoice_line_ids.filtered(lambda line: not line.display_type)):
+        if not all(line.tax_ids for line in invoice.invoice_line_ids.filtered(lambda line: line.display_type == 'product')):
             errors.append(_("- Invoice lines should have at least one Tax applied."))
 
         if not journal._l10n_sa_ready_to_submit_einvoices():
@@ -455,9 +455,7 @@ class AccountEdiFormat(models.Model):
             Return contents of the submitted UBL file or generate it if the invoice has not been submitted yet
         """
         doc = invoice.edi_document_ids.filtered(lambda d: d.edi_format_id.code == 'sa_zatca' and d.state == 'sent')
-        if doc is not None and doc.attachment_id.datas:
-            return {invoice: {'xml_file': doc.attachment_id.datas.decode()}}
-        return {invoice: {'xml_file': self._l10n_sa_generate_zatca_template(invoice)}}
+        return doc.attachment_id.raw or self._l10n_sa_generate_zatca_template(invoice).encode()
 
     def _get_move_applicability(self, move):
         # EXTENDS account_edi

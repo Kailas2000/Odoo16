@@ -311,6 +311,28 @@ msgid "Error Parsing Date [%s:L%d]: %s"
 msgstr "Errore nell'analisi della data [%s:L%d]: %s"
 
 #. module: base_import
+#: code:addons/base_import/models/base_import.py:0
+#, python-format
+msgid ""
+"Error while importing records: Text Delimiter should be a single character."
+msgstr ""
+"Si è verificato un errore durante l'importazione dei record: il delimitatore"
+" testo deve essere un carattere singolo."
+
+#. module: base_import
+#: code:addons/base_import/models/base_import.py:0
+#, python-format
+msgid ""
+"Error while importing records: all rows should be of the same size, but the "
+"title row has %d entries while the first row has %d. You may need to change "
+"the separator character."
+msgstr ""
+"Si è verificato un errore durante l'importazione delle registrazioni: tutte "
+"le righe devono avere le stesse dimensioni ma la riga corrispondente al "
+"titolo ha %d voci mentre la prima riga ha %d. È necessario modificare il "
+"carattere separatore."
+
+#. module: base_import
 #. openerp-web
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
@@ -1074,7 +1096,7 @@ msgstr "Senza titolo"
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "Upload File"
-msgstr "Caricamento File"
+msgstr "Carica file"
 
 #. module: base_import
 #. openerp-web
@@ -1186,7 +1208,7 @@ msgstr "batch"
 #: code:addons/base_import/static/src/legacy/xml/base_import.xml:0
 #, python-format
 msgid "in field"
-msgstr "sul campo"
+msgstr "nel campo"
 
 #. module: base_import
 #. openerp-web

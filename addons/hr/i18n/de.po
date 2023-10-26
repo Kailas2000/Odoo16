@@ -744,7 +744,7 @@ msgstr "Basierend auf der IP-Adresse"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_config_settings__module_hr_attendance
 msgid "Based on attendances"
-msgstr "Basierend auf anwesenden Mitarbeitern"
+msgstr "Basierend auf Anwesenheiten"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_res_config_settings__hr_presence_control_email
@@ -975,7 +975,7 @@ msgstr "Mitarbeiter anlegen"
 #: model:ir.actions.server,name:hr.action_hr_employee_create_user
 #, python-format
 msgid "Create User"
-msgstr "Benutze anlegen"
+msgstr "Benutzer erstellen"
 
 #. module: hr
 #: model_terms:ir.actions.act_window,help:hr.hr_department_kanban_action
@@ -1132,7 +1132,7 @@ msgstr "Zu Lasten"
 #: model:ir.model.fields,field_description:hr.field_hr_employee__child_ids
 #: model:ir.model.fields,field_description:hr.field_hr_employee_public__child_ids
 msgid "Direct subordinates"
-msgstr "Direkte Unterstellte"
+msgstr "Direkte Untergeordnete"
 
 #. module: hr
 #: model:ir.ui.menu,name:hr.menu_hr_employee
@@ -1238,7 +1238,7 @@ msgstr "E-Mail"
 #. module: hr
 #: model:ir.model,name:hr.model_mail_alias
 msgid "Email Aliases"
-msgstr "E-Mail-Aliases"
+msgstr "E-Mail-Aliasse"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
@@ -2521,7 +2521,7 @@ msgstr "Anwesend"
 #: model:ir.model.fields.selection,name:hr.selection__hr_employee_base__hr_icon_display__presence_absent_active
 #: model:ir.model.fields.selection,name:hr.selection__hr_employee_public__hr_icon_display__presence_absent_active
 msgid "Present but not active"
-msgstr "Anwesend aber nicht aktiv"
+msgstr "Anwesend, aber nicht aktiv"
 
 #. module: hr
 #: model:ir.actions.report,name:hr.hr_employee_print_badge
@@ -2862,7 +2862,7 @@ msgstr "Vollständiger Name des Ehepartners"
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
 msgid "State"
-msgstr "Bundesland/Region"
+msgstr "Bundesland"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.res_users_view_form_profile
@@ -3411,7 +3411,7 @@ msgstr "Arbeitserlaubnisnr."
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__work_permit_scheduled_activity
 msgid "Work Permit Scheduled Activity"
-msgstr "Arbeitsgenehmigung Geplante Aktivität"
+msgstr "Arbeitserlaubnis Geplante Aktivität"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__work_phone

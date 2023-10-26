@@ -411,6 +411,8 @@ class WebsiteSale(http.Controller):
 
         products_prices = lazy(lambda: products._get_sales_prices(pricelist))
 
+        fiscal_position_id = website._get_current_fiscal_position_id(request.env.user.partner_id)
+
         values = {
             'search': fuzzy_search_term or search,
             'original_search': fuzzy_search_term and search,
@@ -435,6 +437,7 @@ class WebsiteSale(http.Controller):
             'products_prices': products_prices,
             'get_product_prices': lambda product: lazy(lambda: products_prices[product.id]),
             'float_round': tools.float_round,
+            'fiscal_position_id': fiscal_position_id,
         }
         if filter_by_price_enabled:
             values['min_price'] = min_price or available_min_price
@@ -582,6 +585,8 @@ class WebsiteSale(http.Controller):
         other_image = product_images[new_image_idx]
         source_field = hasattr(image_to_resequence, 'video_url') and image_to_resequence.video_url and 'video_url' or 'image_1920'
         target_field = hasattr(other_image, 'video_url') and other_image.video_url and 'video_url' or 'image_1920'
+        if target_field == 'video_url' and image_res_model == 'product.product':
+            raise ValidationError(_("Can not resequence a video at first position."))
         previous_data = other_image[target_field]
         other_image[source_field] = image_to_resequence[source_field]
         image_to_resequence[target_field] = previous_data
@@ -947,11 +952,11 @@ class WebsiteSale(http.Controller):
             name_change = partner_su and 'name' in data and data['name'] != partner_su.name
             email_change = partner_su and 'email' in data and data['email'] != partner_su.email
 
-            # Prevent changing the partner name if invoices have been issued.
-            if name_change and not partner_su.can_edit_vat():
+            # Prevent changing the billing partner name if invoices have been issued.
+            if mode[1] == 'billing' and name_change and not partner_su.can_edit_vat():
                 error['name'] = 'error'
                 error_message.append(_(
-                    "Changing your name is not allowed once invoices have been issued for your"
+                    "Changing your name is not allowed once documents have been issued for your"
                     " account. Please contact us directly for this operation."
                 ))
 
@@ -1625,6 +1630,7 @@ class WebsiteSale(http.Controller):
         attribute = request.env['product.attribute'].browse(attribute_id)
         if 'display_type' in options:
             attribute.write({'display_type': options['display_type']})
+            request.env['ir.qweb'].clear_caches()
 
     @http.route(['/shop/config/website'], type='json', auth='user')
     def _change_website_config(self, **options):

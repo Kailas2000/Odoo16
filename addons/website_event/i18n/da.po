@@ -827,7 +827,7 @@ msgstr "Ingen resultater fundet for '"
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.event_pages_kanban_view
 msgid "Not Published"
-msgstr ""
+msgstr "Ikke udgivet"
 
 #. module: website_event
 #. odoo-python
@@ -1073,6 +1073,13 @@ msgstr "Skabeloner"
 #: model:ir.model.fields,help:website_event.field_event_tag_category__website_url
 msgid "The full URL to access the document through the website."
 msgstr "Den fulde URL for at få adgang til dokumentet via hjemmesiden."
+
+#. module: website_event
+#. odoo-python
+#: code:addons/website_event/models/event_event.py:0
+#, python-format
+msgid "The website must be from the same company as the event."
+msgstr ""
 
 #. module: website_event
 #. odoo-python

@@ -62,8 +62,8 @@ class WebsiteVisitor(models.Model):
     country_flag = fields.Char(related="country_id.image_url", string="Country Flag")
     lang_id = fields.Many2one('res.lang', string='Language', help="Language from the website when visitor has been created")
     timezone = fields.Selection(_tz_get, string='Timezone')
-    email = fields.Char(string='Email', compute='_compute_email_phone')
-    mobile = fields.Char(string='Mobile', compute='_compute_email_phone')
+    email = fields.Char(string='Email', compute='_compute_email_phone', compute_sudo=True)
+    mobile = fields.Char(string='Mobile', compute='_compute_email_phone', compute_sudo=True)
 
     # Visit fields
     visit_count = fields.Integer('# Visits', default=1, readonly=True, help="A new visit is considered if last connection was more than 8 hours ago.")
@@ -87,9 +87,11 @@ class WebsiteVisitor(models.Model):
     def name_get(self):
         res = []
         for record in self:
+            # Accessing name of partner through sudo to avoid infringing
+            # record rule if partner belongs to another company.
             res.append((
                 record.id,
-                record.partner_id.name or _('Website Visitor #%s', record.id)
+                record.partner_id.sudo().name or _('Website Visitor #%s', record.id)
             ))
         return res
 

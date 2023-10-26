@@ -107,7 +107,7 @@ class SaleOrder(models.Model):
         for order in self:
             coupons |= order._get_reward_coupons()
         if coupons:
-            coupons._send_creation_communication()
+            coupons._send_creation_communication(force_send=True)
 
     def _get_applied_global_discount_lines(self):
         """
@@ -317,8 +317,12 @@ class SaleOrder(models.Model):
         # discount should never surpass the order's current total amount
         max_discount = min(self.amount_total, max_discount)
         if reward.discount_mode == 'per_point':
+            points = self._get_real_points_for_coupon(coupon)
+            if reward.program_type == 'loyalty':
+                # Rewards cannot be partially offered to customers
+                points = points // reward.required_points * reward.required_points
             max_discount = min(max_discount,
-                reward.currency_id._convert(reward.discount * self._get_real_points_for_coupon(coupon),
+                reward.currency_id._convert(reward.discount * points,
                     self.currency_id, self.company_id, fields.Date.today()))
         elif reward.discount_mode == 'per_order':
             max_discount = min(max_discount,

@@ -18,6 +18,7 @@
 # Ryan <ouyang.em@gmail.com>, 2023
 # Yazi Tian, 2023
 # Jeffery CHEN <jeffery9@gmail.com>, 2023
+# Wil Odoo, 2023
 # Chloe Wang, 2023
 # 
 msgid ""
@@ -3543,6 +3544,15 @@ msgstr ""
 #, python-format
 msgid "Cannot generate an unused account code."
 msgstr "不能生成未使用的科目代码"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_journal.py:0
+#, python-format
+msgid ""
+"Cannot generate an unused journal code. Please change the name for journal "
+"%s."
+msgstr "无法生成未使用的日记账代码。请更改日记账名称%s。"
 
 #. module: account
 #. odoo-python
@@ -9711,7 +9721,7 @@ msgstr "错误数"
 #: model:ir.model.fields,help:account.field_res_company__message_needaction_counter
 #: model:ir.model.fields,help:account.field_res_partner_bank__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "需要采取行动的消息数量"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_account__message_has_error_counter
@@ -12847,8 +12857,8 @@ msgstr "搁置科目"
 
 #. module: account
 #: model:ir.actions.server,name:account.action_move_switch_invoice_to_credit_note
-msgid "Switch into refund/credit note"
-msgstr "切换到退款通知/退款通知"
+msgid "Switch into invoice/credit note"
+msgstr "切换至发票/贷项凭单"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_payment_term_line__end_month
@@ -13464,13 +13474,6 @@ msgstr "日记帐分录顺序不符合当前格式。只有会计可以更改。
 #. module: account
 #. odoo-python
 #: code:addons/account/models/account_payment_term.py:0
-#, python-format
-msgid "The Months and Days of the Payment Terms lines must be positive."
-msgstr "支付条款行的月份和日期必须为正数。"
-
-#. module: account
-#. odoo-python
-#: code:addons/account/models/account_payment_term.py:0
 #: model_terms:ir.ui.view,arch_db:account.view_payment_term_form
 #, python-format
 msgid "The Payment Term must have one Balance line."
@@ -13942,7 +13945,7 @@ msgstr ""
 #, python-format
 msgid ""
 "The move could not be posted for the following reason: %(error_message)s"
-msgstr ""
+msgstr "分录未能过账，原因：%(error_message)s"
 
 #. module: account
 #. odoo-javascript
@@ -14663,7 +14666,7 @@ msgstr "此凭证将在会计日期发布：%(date)s"
 #: code:addons/account/static/src/components/account_move_list/account_move_list.js:0
 #, python-format
 msgid "This operation will create a gap in the sequence."
-msgstr ""
+msgstr "此操作会令序列间断。"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_invoice_send__auto_delete
@@ -16295,6 +16298,13 @@ msgid ""
 "You cannot switch an account to prevent the reconciliation if some partial "
 "reconciliations are still pending."
 msgstr "在局部调账还在挂账状态，您不能切换一个科目到回避调整状态。"
+
+#. module: account
+#. odoo-python
+#: code:addons/account/models/account_account.py:0
+#, python-format
+msgid "You cannot switch the type of a posted document."
+msgstr "不能切换已过账单据的类型。"
 
 #. module: account
 #. odoo-python

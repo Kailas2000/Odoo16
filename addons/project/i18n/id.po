@@ -1371,7 +1371,7 @@ msgstr "Tidak dapat menjumlah keseluruhan baris %r."
 #. module: project
 #: model:ir.model.fields,help:project.field_project_task__partner_is_company
 msgid "Check if the contact is a company, otherwise it is a person"
-msgstr ""
+msgstr "Periksa bila kontak merupakan perusahaan, bila tidak maka orang"
 
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_task__child_text
@@ -3120,6 +3120,13 @@ msgstr "Tinggalkan komentar"
 #. module: project
 #. odoo-javascript
 #: code:addons/project/static/src/js/tours/project.js:0
+#, python-format
+msgid "Let's create your first <b>stage</b>."
+msgstr "Mari membuat <b>tahap</b> pertama Anda."
+
+#. module: project
+#. odoo-javascript
+#: code:addons/project/static/src/js/tours/project.js:0
 #: code:addons/project/static/src/js/tours/project.js:0
 #, python-format
 msgid "Let's create your first <b>project</b>."
@@ -3131,6 +3138,13 @@ msgstr "Ayo buat <b>project</b> pertama Anda."
 #, python-format
 msgid "Let's create your first <b>task</b>."
 msgstr "Ayo buat <b>task</b> pertama Anda."
+
+#. module: project
+#. odoo-javascript
+#: code:addons/project/static/src/js/tours/project.js:0
+#, python-format
+msgid "Let's create your second <b>stage</b>."
+msgstr "Mari membuat <b>tahap</b> kedua Anda."
 
 #. module: project
 #. odoo-javascript
@@ -3153,7 +3167,7 @@ msgstr "Ayo mulai mengerjakan task Anda."
 #. module: project
 #: model_terms:ir.actions.act_window,help:project.rating_rating_action_task
 msgid "Let's wait for your customers to manifest themselves."
-msgstr ""
+msgstr "Mari menunggu pelanggan Anda datang sendiri."
 
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_share_wizard__share_link
@@ -3564,6 +3578,11 @@ msgstr ""
 
 #. module: project
 #: model_terms:ir.ui.view,arch_db:project.portal_tasks_list
+msgid "No Customer"
+msgstr "Tidak ada Pelanggan"
+
+#. module: project
+#: model_terms:ir.ui.view,arch_db:project.portal_tasks_list
 msgid "No Milestone"
 msgstr "Tidak ada Milestone"
 
@@ -3577,7 +3596,7 @@ msgstr "Tidak Ada Rating"
 #. module: project
 #: model:ir.model.fields.selection,name:project.selection__report_project_task_user__rating_last_text__none
 msgid "No Rating yet"
-msgstr ""
+msgstr "Belum ada Rating"
 
 #. module: project
 #. odoo-python
@@ -3721,7 +3740,7 @@ msgstr "Jumlah kesalahan"
 #: model:ir.model.fields,help:project.field_project_task__message_needaction_counter
 #: model:ir.model.fields,help:project.field_project_update__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Jumlah pesan yang membutuhkan tindakan"
 
 #. module: project
 #: model:ir.model.fields,help:project.field_project_milestone__message_has_error_counter
@@ -4539,7 +4558,7 @@ msgstr "Pengulangan"
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_task__recurrence_update
 msgid "Recurrence Update"
-msgstr ""
+msgstr "Update Pengulangan"
 
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_task__recurring_task

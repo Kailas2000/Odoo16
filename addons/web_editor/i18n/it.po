@@ -2041,7 +2041,7 @@ msgstr "Contorno + arrotondato"
 #. module: web_editor
 #: model_terms:ir.ui.view,arch_db:web_editor.snippet_options
 msgid "Padding"
-msgstr "Padding"
+msgstr "Riempimento"
 
 #. module: web_editor
 #. odoo-javascript
@@ -2494,7 +2494,7 @@ msgstr "Cerca record..."
 #: code:addons/web_editor/static/src/js/editor/snippets.options.js:0
 #, python-format
 msgid "Search more..."
-msgstr "Cerca di più ..."
+msgstr "Cerca altro..."
 
 #. module: web_editor
 #. odoo-javascript

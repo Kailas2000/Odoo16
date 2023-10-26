@@ -30,11 +30,16 @@
         'views/custom_fleet_view.xml',
         'views/rent_request.xml',
         'views/rent_charge.xml',
+        'views/snippet/custom_snippet.xml',
         'views/vehicle_rental_menu.xml',
     ],
     'assets': {
         'web.assets_backend': [
             '/vehicle_rental/static/src/js/action_manager.js'
-        ]
+        ],
+        'web.assets_frontend': [
+            'vehicle_rental/static/src/xml/vehicle_view.xml',
+            'vehicle_rental/static/src/js/rent_request_snippet.js',
+       ],
     }
 }

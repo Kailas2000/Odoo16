@@ -92,7 +92,7 @@ class VehicleRental(Controller):
     @route(['''/view/rent_request/<model("rent.request"):rec>'''], auth='user',
            website=True)
     def view_rent_request(self, rec):
-        """To vie the specific rent request based on the button click"""
+        """To view the specific rent request based on the button click"""
         return request.render('website_vehicle_rental.rent_request_view_template',
                               {'rent_details': rec})
 

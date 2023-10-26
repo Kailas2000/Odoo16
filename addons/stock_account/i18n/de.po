@@ -163,7 +163,7 @@ msgstr "Automatisch"
 #. module: stock_account
 #: model:ir.model.fields,field_description:stock_account.field_product_product__avg_cost
 msgid "Average Cost"
-msgstr "Durchschnittlichskosten"
+msgstr "Durchschnittskosten"
 
 #. module: stock_account
 #: model:ir.model.fields.selection,name:stock_account.selection__product_category__property_cost_method__average
@@ -466,7 +466,7 @@ msgstr "Verknüpft mit"
 #. module: stock_account
 #: model_terms:ir.ui.view,arch_db:stock_account.res_config_settings_view_form
 msgid "Lots &amp; Serial numbers will appear on the invoice"
-msgstr "Chargen &amp; Seriennummern werden auf der Rechnung erscheinen"
+msgstr "Lose &amp; Seriennummern werden auf der Rechnung erscheinen"
 
 #. module: stock_account
 #: model:ir.model.fields.selection,name:stock_account.selection__product_category__property_valuation__manual_periodic
@@ -586,7 +586,7 @@ msgstr "BBE-Menge"
 #. module: stock_account
 #: model:ir.model,name:stock_account.model_stock_quant
 msgid "Quants"
-msgstr "Mengen"
+msgstr "Quanten"
 
 #. module: stock_account
 #: model:ir.model.fields,field_description:stock_account.field_stock_valuation_layer_revaluation__reason
@@ -664,7 +664,7 @@ msgstr ""
 #. module: stock_account
 #: model:ir.model.fields,field_description:stock_account.field_product_category__property_stock_account_input_categ_id
 msgid "Stock Input Account"
-msgstr "Bestand Eingangskonto"
+msgstr "Bestandseingangskonto"
 
 #. module: stock_account
 #: model:ir.model.fields,field_description:stock_account.field_product_category__property_stock_journal
@@ -683,7 +683,7 @@ msgstr "Lagerbuchung"
 #. module: stock_account
 #: model:ir.model.fields,field_description:stock_account.field_product_category__property_stock_account_output_categ_id
 msgid "Stock Output Account"
-msgstr "Bestand Ausgangskonto"
+msgstr "Bestandsausgangskonto"
 
 #. module: stock_account
 #: model:ir.model,name:stock_account.model_stock_quantity_history
@@ -862,7 +862,7 @@ msgid ""
 " Order/Purchase Order"
 msgstr ""
 "Auslösen einer Minderung der gelieferten/erhaltenen Menge im zugehörigen "
-"Verkaufs-/Einkaufsauftrag"
+"Verkaufsauftrag bzw. der zugehörigen Bestellung"
 
 #. module: stock_account
 #: model_terms:ir.ui.view,arch_db:stock_account.product_product_stock_tree_inherit_stock_account
@@ -884,7 +884,7 @@ msgstr "Maßeinheit"
 #: model:ir.model.fields,field_description:stock_account.field_stock_move__to_refund
 #: model:ir.model.fields,field_description:stock_account.field_stock_return_picking_line__to_refund
 msgid "Update quantities on SO/PO"
-msgstr "Mengen auf Verkaufs-/Einkaufsaufträge aktualisieren"
+msgstr "Mengen auf Verkaufsaufträgen/Bestellungen aktualisieren"
 
 #. module: stock_account
 #: model:ir.model.fields,help:stock_account.field_stock_location__valuation_in_account_id

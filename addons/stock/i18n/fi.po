@@ -31,10 +31,10 @@
 # Janne Räty, 2022
 # Martin Trigaux, 2022
 # Kari Lindgren <kari.lindgren@emsystems.fi>, 2022
-# Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2022
 # Marko Happonen <marko.happonen@sprintit.fi>, 2022
 # Tuomas Lyyra <tuomas.lyyra@legenda.fi>, 2022
 # Konsta Aavaranta, 2023
+# Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2023
 # Ossi Mantylahti <ossi.mantylahti@obs-solutions.fi>, 2023
 # 
 msgid ""
@@ -59,7 +59,10 @@ msgid ""
 "\n"
 "\n"
 "%s --> Product UoM is %s (%s) - Move UoM is %s (%s)"
-msgstr " %s -> Tuotteen UoM on %s (%s) - Siirrä UoM on %s (%s) \n"
+msgstr ""
+"\n"
+"\n"
+" %s -> Tuotteen UoM on %s (%s) - Siirrä UoM on %s (%s) "
 
 #. module: stock
 #. odoo-python
@@ -262,7 +265,6 @@ msgid ""
 "* Available: When products are reserved, it is set to 'Available'.\n"
 "* Done: When the shipment is processed, the state is 'Done'."
 msgstr ""
-"\n"
 "* Uusi: Kun varastotilaus on luotu ja sitä ei ole vielä vahvistettu.\n"
 "* Odotetaan toista liikettä: Tämä tila näkyy, kun siirto odottaa toista, esimerkiksi ketjussa.\n"
 "* Odotetaan Saatavuutta: Tämä tila saavutetaan, kun hankintaratkaisu ei ole suora. Se saattaa vaatia aikataulutuksen suorittamista, joka on valmistettava komponentti ...\n"
@@ -3816,17 +3818,19 @@ msgstr "Virheellinen verkkotunnuksen vasen operandi %s"
 
 #. module: stock
 #. odoo-python
-#: code:addons/stock/models/product.py:0
+#: code:addons/stock/models/product.py:0 code:addons/stock/models/product.py:0
 #, python-format
 msgid "Invalid domain operator %s"
 msgstr "Virheellinen verkkotunnuksen operaattori %s"
 
 #. module: stock
 #. odoo-python
-#: code:addons/stock/models/product.py:0
+#: code:addons/stock/models/product.py:0 code:addons/stock/models/product.py:0
 #, python-format
-msgid "Invalid domain right operand %s"
-msgstr "Virheellinen verkkotunnuksen oikea operandi %s"
+msgid "Invalid domain right operand '%s'. It must be of type Integer/Float"
+msgstr ""
+"Oikea operandi '%s' on virheellinen. Sen on oltava kokonaisluku tai "
+"liukuluku"
 
 #. module: stock
 #. odoo-python
@@ -5205,7 +5209,7 @@ msgstr "Saapuneiden varastosiirtojen määrä viimeisten 12 kuukauden aikana"
 #: model:ir.model.fields,help:stock.field_stock_picking__message_needaction_counter
 #: model:ir.model.fields,help:stock.field_stock_scrap__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Toimenpiteitä vaativien viestien määrä"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_lot__message_has_error_counter
@@ -7438,6 +7442,13 @@ msgstr "Keräilyjen sarja"
 #, python-format
 msgid "Sequence return"
 msgstr "Jakson palautus"
+
+#. module: stock
+#. odoo-python
+#: code:addons/stock/models/stock_picking.py:0
+#, python-format
+msgid "Sequences %s already exist."
+msgstr "Jaksot %s ovat jo olemassa."
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move__lot_ids
@@ -10011,8 +10022,10 @@ msgstr "Et voi jakaa luonnossiirtoa. Se on vahvistettava ensin."
 #. odoo-python
 #: code:addons/stock/models/stock_move.py:0
 #, python-format
-msgid "You cannot split a stock move that has been set to 'Done'."
-msgstr "Et voi jakaa valmista varastosiirtoa."
+msgid "You cannot split a stock move that has been set to 'Done' or 'Cancel'."
+msgstr ""
+"Et voi jakaa varastosiirtoa, joka on asetettu tilaan \"Valmis\" tai "
+"\"Peruuta\"."
 
 #. module: stock
 #. odoo-python

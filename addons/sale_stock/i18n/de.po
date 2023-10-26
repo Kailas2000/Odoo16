@@ -180,7 +180,7 @@ msgstr "Datum:"
 #. module: sale_stock
 #: model:ir.model.fields,field_description:sale_stock.field_res_users__property_warehouse_id
 msgid "Default Warehouse"
-msgstr "Standard-Lagerhaus"
+msgstr "Standardlagerhaus"
 
 #. module: sale_stock
 #: model_terms:ir.ui.view,arch_db:sale_stock.view_order_form_inherit_sale_stock
@@ -229,7 +229,7 @@ msgstr "Incoterms auf Verkaufsaufträgen und Rechnungen anzeigen"
 #. module: sale_stock
 #: model_terms:ir.ui.view,arch_db:sale_stock.res_config_settings_view_form_sale
 msgid "Display incoterms on orders &amp; invoices"
-msgstr "Lieferbedingungen für Aufträgen und Rechnungen anzeigen"
+msgstr "Zeigen Sie Incoterms auf Aufträgen & Rechnungen an"
 
 #. module: sale_stock
 #: code:addons/sale_stock/models/sale_order.py:0
@@ -532,7 +532,7 @@ msgstr "Angebote"
 #: code:addons/sale_stock/static/src/widgets/qty_at_date_widget.xml:0
 #, python-format
 msgid "Remaining demand available at"
-msgstr "Restliche Bedarf verfügbar am"
+msgstr "Restlicher Bedarf verfügbar am"
 
 #. module: sale_stock
 #. openerp-web
@@ -636,7 +636,7 @@ msgstr "Alle Produkte auf einmal versenden"
 #. module: sale_stock
 #: model:ir.model.fields.selection,name:sale_stock.selection__res_config_settings__default_picking_policy__direct
 msgid "Ship products as soon as available, with back orders"
-msgstr "Versenden Sie Produkte so schnell wie möglich, mit Lieferrückstanden"
+msgstr "Produkte so schnell wie möglich versenden, mit Lieferrückstanden"
 
 #. module: sale_stock
 #: model:ir.model.fields,field_description:sale_stock.field_sale_order__picking_policy
@@ -760,7 +760,7 @@ msgstr "Wenn alle Produkte bereit sind"
 #. module: sale_stock
 #: model_terms:ir.ui.view,arch_db:sale_stock.res_config_settings_view_form_stock
 msgid "When to start shipping"
-msgstr "Wann mit dem Versand beginnen "
+msgstr "Wann soll mit dem Versand begonnen wird"
 
 #. module: sale_stock
 #: model_terms:ir.ui.view,arch_db:sale_stock.exception_on_so

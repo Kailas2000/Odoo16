@@ -9,7 +9,6 @@
     after the product description in shop or cart.
     """,
     'depends' : [
-        'base',
         'website',
         'website_sale',
         'mrp',
@@ -17,5 +16,9 @@
     'data': [
         'view/conf_settings.xml',
         'view/bom_products_list.xml'
-    ]
+    ],
+    'installable': True,
+    'application': False,
+    'auto_install': False,
+    'license': 'LGPL-3',
 }

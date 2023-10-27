@@ -1,11 +1,13 @@
 <odoo>
     <template id="bom_products_cart" inherit_id="website_sale.cart_lines" name="BOM Product List">
-         <xpath expr="//td[hasclass('td-product_name')]" position="inside">
+         <xpath expr="//td[hasclass('td-product_name')]" position="inside"><br/>
              <div>
-                 <t t-foreach="bom_line_products" t-as="bom_products">
-                     <span t-if="bom_products['product_id'] == line.product_template_id.id">
-                         <t t-foreach="bom_products['bom_products']" t-as="products_list">
-                            <t t-esc="products_list"/><br/>
+                 <t t-foreach="product_id" t-as="products_id">
+                     <span t-if="products_id == line.product_template_id.id ">
+                         <t t-foreach="line.product_template_id.bom_ids.bom_line_ids" t-as="bom_products">
+                             <a t-att-href="bom_products.product_tmpl_id.id">
+                                 <t t-esc="bom_products.product_tmpl_id.name"/><br/>
+                             </a>
                          </t>
                      </span>
                  </t>

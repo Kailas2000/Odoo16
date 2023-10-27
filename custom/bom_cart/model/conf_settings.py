@@ -28,5 +28,4 @@ class ConfSetting(models.TransientModel):
       product_list = self.env['ir.config_parameter'].sudo().get_param('bom_cart.bom_products_ids')
       res.update(bom_products_ids=[(6, 0, literal_eval(product_list))
                                    ] if product_list else False, )
-      print(res['bom_products_ids'], 'res')
       return res

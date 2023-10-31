@@ -48,7 +48,6 @@
                 <div class="alert alert success">
                     <span>Successfully Created <t t-esc="partner_id.name"/></span>
                 </div>
-
                 <div class="row">
                     <t t-foreach="partner_ids" t-as="partner">
                         <div class="card col-3">

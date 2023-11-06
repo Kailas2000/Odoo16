@@ -9,7 +9,6 @@ odoo.define('pos_rating.receipt', function (require) {
        var result = super.export_for_printing(...arguments);
        var product_rating = this.get_product().product_quality
        result.product_quality = product_rating
-       console.log(result, 'rst')
        return result;
    }
    }

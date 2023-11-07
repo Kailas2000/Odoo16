@@ -29,3 +29,4 @@ class ConfSetting(models.TransientModel):
       res.update(bom_products_ids=[(6, 0, literal_eval(product_list))
                                    ] if product_list else False, )
       return res
+

@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 import pprint
-
 from werkzeug.exceptions import Forbidden
-
 from odoo import http
 from odoo.http import request
 
@@ -25,6 +23,7 @@ class RazorPayController(http.Controller):
             'razorpayment', data
         )
         if data.get('razorpay_order_id'):
+            print(data.get('razorpay_order_id'), 'abcd')
             self._verify_notification_signature(data, tx_sudo)
         # Handle the notification data.
         tx_sudo._handle_notification_data('razorpayment', data)
@@ -32,7 +31,7 @@ class RazorPayController(http.Controller):
 
     @staticmethod
     def _verify_notification_signature(notification_data, tx_sudo):
-        # Compare the received signature with the expected signature computed from the payload
+        """Compare the received signature with the expected signature"""
         verified = tx_sudo.verify_signature(notification_data)
         if not verified:
             _logger.warning("received notification with invalid signature")

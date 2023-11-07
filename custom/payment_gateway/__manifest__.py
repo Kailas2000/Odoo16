@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 {
     'name': "Razorpay Payment",
     'version': '16.0.1.0.0',
@@ -9,12 +10,12 @@
     """,
     'depends' : [
         'payment',
-        'website'
+        'website',
     ],
     'data': [
-        'data/razorpay_payment_view.xml',
-
         'views/razorpay_provider_view.xml',
-        'views/razorpay_payment_templates.xml'
+        'views/razorpay_payment_templates.xml',
+        'data/razorpay_payment_data.xml',
+        'data/automatic_invoice_enable.xml',
     ],
 }

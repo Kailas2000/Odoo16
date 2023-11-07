@@ -14,11 +14,14 @@ class PaymentTransaction(models.Model):
     _inherit = 'payment.transaction'
 
     def _get_specific_rendering_values(self, processing_values):
+        """Rendering the details from processing values,
+        the values in the order details, amount and all
+        passing as a dict file."""
         res = super()._get_specific_rendering_values(processing_values)
         if self.provider_code != 'razorpayment':
             return res
         DATA = {
-            "amount": float(processing_values.get('amount')) *100,
+            "amount": float(processing_values.get('amount')) * 100,
             "currency": "INR",
             "receipt": processing_values['reference']
         }
@@ -40,6 +43,7 @@ class PaymentTransaction(models.Model):
         return rendering_values
 
     def _get_tx_from_notification_data(self, provider_code, notification_data):
+        """Accessing the function from odoo addons"""
         tx = super()._get_tx_from_notification_data(provider_code, notification_data)
         if provider_code != 'razorpayment' or len(tx) == 1:
             return tx
@@ -52,6 +56,8 @@ class PaymentTransaction(models.Model):
         return tx
 
     def verify_signature(self, data):
+        """ verify_signature() function is for payment signature verification:
+        If the signature you generate on your server matches the razorpay_signature """
         verify = client.utility.verify_payment_signature({
             'razorpay_order_id': data['razorpay_order_id'],
             'razorpay_payment_id': data['razorpay_payment_id'],

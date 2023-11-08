@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="qr_icon" owl="1">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+        <div class="d-flex align-items-center m-4">
+            <li class="o_mail_navbar_item" style='list-style-type: none;'>
+                <a class="dropdown-toggle o-no-caret"
+                   data-bs-toggle="dropdown"
+                   data-display="static"
+                   aria-haspopup="true" aria-expanded="false"
+                   title="QR" href="#" role="button">
+                    <i id='create_qr' class="fa fa-qrcode"
+                       style="color: white; margin-bottom:8 px; padding:13px;"
+                       role="img" aria-label="QR GEN"/>
+                </a>
+                <ul class="o_mail_navbar_dropdown dropdown-menu dropdown-menu-right" role="menu">
+                    <li class="o_mail_navbar_dropdown_top" style='height:250px;width:300px;'>
+                        <div class="container">
+                           <form class="qr_form" name="f_translate">
+                                <span>Input:
+                                    <input type="text" id="data" class="form-control" name="data"/>
+                                </span>
+                                <br/>
+                                <div class="btn-group mr-2" style="position: relative">
+                                    <input type="button" style="position: absolute"
+                                           class="btn btn-primary" id="generate"
+                                           t-on-click="_onClick_generate" value="Generate"/>
+                                    <input type="button" style="margin-left: 100px"
+                                           class="btn btn-primary" id="reset"
+                                           t-on-click="_onClick_reset" value="Reset"/>
+                                </div>
+                           </form>
+                        </div>
+                        <br/>
+                        <div id="qrcode" style="margin-left: 80px"></div>
+                    </li>
+               </ul>
+            </li>
+        </div>
+    </t>
+</templates>
+

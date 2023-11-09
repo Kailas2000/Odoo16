@@ -41,5 +41,9 @@
             'vehicle_rental/static/src/xml/vehicle_view.xml',
             'vehicle_rental/static/src/js/rent_request_snippet.js',
        ],
-    }
+    },
+    'installable': True,
+    'application': False,
+    'auto_install': False,
+    'license': 'LGPL-3',
 }

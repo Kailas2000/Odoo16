@@ -23,7 +23,6 @@ class RazorPayController(http.Controller):
             'razorpayment', data
         )
         if data.get('razorpay_order_id'):
-            print(data.get('razorpay_order_id'), 'abcd')
             self._verify_notification_signature(data, tx_sudo)
         # Handle the notification data.
         tx_sudo._handle_notification_data('razorpayment', data)

@@ -7,7 +7,7 @@ odoo.define('pos_remove_orderline.remove_orderline', function (require) {
 
 /*  Extends Orderline and created the remove_orderlines()
     function to remove the order line */
-   const RemoveOrderline = (Orderline) => class RemoveOrderline extends Orderline {
+``   const RemoveOrderline = (Orderline) => class RemoveOrderline extends Orderline {``
        remove_orderlines(eve) {
             var c_id = eve.target.dataset.id;
             var select_orderline = this.env.pos.selectedOrder.orderlines;

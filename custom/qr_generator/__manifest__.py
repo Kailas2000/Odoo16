@@ -2,6 +2,7 @@
     "name": "QR-Code Generator",
     'version': '16.0.1.0.0',
     'author': "Kailas",
+    'category': 'Category',
     'summary' : 'QR Code Generating',
     'description': """
     QR Code generating based on the user input and the user can download the QR

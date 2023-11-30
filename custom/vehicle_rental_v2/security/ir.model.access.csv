@@ -1,4 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-vehicle_rental,vehicle_rent,model_vehicle_rental,base.group_user,1,1,1,1
-rental_request,rental_request,model_rental_request,base.group_user,1,1,1,1
-rental_charge,rental_charge,model_rental_charge,base.group_user,1,1,1,1

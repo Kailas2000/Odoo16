@@ -2,6 +2,7 @@
     'name': 'Maintenance Request',
     'version': '16.0.1.0.0',
     'author': "Kailas",
+    'category': 'Category',
     'summary' : 'Maintenance Request',
     'description': """
     Requesting for maintenance through website

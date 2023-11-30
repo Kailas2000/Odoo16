@@ -1,6 +1,7 @@
 {
     'name': 'Website Vehicle Rental',
     'version': '16.0.1.0.0',
+    'category': 'Category',
     'depends': ['website'],
     'data':[
         'data/website_rental_menu.xml',

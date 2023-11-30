@@ -51,6 +51,7 @@
                            options="{'clickable': '1'}"/>
                 </header>
                 <sheet>
+                    <!-- Smart Button for rent requests -->
                     <div name="button_box" position="inside">
                         <button class="oe_stat_button" type="object"
                                 name="get_request" icon="fa-car">

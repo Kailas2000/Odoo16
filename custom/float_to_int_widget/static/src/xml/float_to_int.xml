@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="Float_To_Int" owl="1">
+        <input type="number" class="o_input float_to_int"
+            t-ref="floatint"
+            t-att-value="props.value"
+            t-on-change="UpdateFloat"/>
+    </t>
+</templates>

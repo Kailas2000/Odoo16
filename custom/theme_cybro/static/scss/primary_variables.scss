@@ -1,0 +1,73 @@
+
+//------------------------------------------------------------------------------
+// Colors
+//------------------------------------------------------------------------------
+
+// Color combinations
+$o-color-palettes: map-merge($o-color-palettes,
+    (
+        'cybro-1': (
+            'o-color-1': #0da9ef,
+            'o-color-2': #0075B7,
+            'o-color-3': #E9ECEF,
+            'o-color-4': #FFFFFF,
+            'o-color-5': #343a40,
+
+            'o-cc1-text': #6c757d,
+            'o-cc1-headings': 'o-color-5',
+            'o-cc1-btn-primary': 'o-color-4',
+            'o-cc1-btn-primary-border': 'o-color-2',
+            'o-cc1-btn-secondary': 'o-color-3',
+            'o-cc1-btn-secondar-border': 'o-color-1',
+
+//             'tp-header-box-color': 1,
+//             'menu': 2,
+            'footer': 4,
+            'copyright': 5,
+        ),
+    )
+);
+$o-selected-color-palettes-names: append($o-selected-color-palettes-names, 'cybro-1');
+
+
+//------------------------------------------------------------------------------
+// Website Default
+//------------------------------------------------------------------------------
+
+$o-website-values-palettes: (
+    (
+        'color-palettes-name': 'cybro-1',
+        'headings-font': 'Roboto',
+        'navbar-font': 'Open Sans',
+        'buttons-font': 'Open Sans',
+        'header-template': 'hamburger',
+        'hamburger-positions': 'right',
+        'hamburger-type': 'off-canvas',
+        'footer-template': 'contact',
+    ),
+);
+
+//------------------------------------------------------------------------------
+// Font
+//------------------------------------------------------------------------------
+
+$o-theme-font-configs: (
+    'Open Sans': (
+        'family': ('Open Sans', sans-serif),
+        'url': 'Open+Sans:300,300i,400,400i,700,700i',
+    ),
+);
+
+$o-theme-font-configs: map-merge($o-theme-font-configs, (
+    'Roboto': (
+        'family': ('Roboto', sans-serif),
+        'url': 'Roboto:300,300i,400,400i,700,700i'
+    ),
+));
+
+$o-theme-font-configs: map-merge((
+    'Caveat': (
+        'family': ('Caveat', cursive),
+        'url': 'Caveat:400,500',
+    ),
+), $o-theme-font-configs);

@@ -52,6 +52,7 @@ export class SalesDashboard extends Component {
 
     async onClickQuotations(){
         return this.actionService.doAction({
+            name: "Quotations",
             type: "ir.actions.act_window",
             res_model: "sale.order",
             domain: [["id", "in", this.state.data.quotations]],
@@ -62,6 +63,7 @@ export class SalesDashboard extends Component {
     }
     async onClickOrders(){
         return this.actionService.doAction({
+            name: "Orders",
             type: "ir.actions.act_window",
             res_model: "sale.order",
             domain: [["id", "in", this.state.data.orders]],

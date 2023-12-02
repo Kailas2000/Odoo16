@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <delete model="website.menu" search="[('url','in', ['/', '/contactus'])]"/>
+
+        <record id="menu_about_us" model="website.menu">
+            <field name="name">About Us</field>
+            <field name="url">/about-us</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">10</field>
+        </record>
+
+        <!-- External Links-->
+        <record id="menu_about_us_2" model="website.menu">
+            <field name="name">About Us 2</field>
+            <field name="url">https://www.cybrosys.com</field>
+            <field name="parent_id" ref="website.main_menu"/>
+        </record>
+
+        <!--  New Window-->
+        <record id="menu_about_us_3" model="website.menu">
+            <field name="new_window" eval="True"/>
+            <field name="name">About Us 3</field>
+            <field name="url">https://www.cybrosys.com</field>
+            <field name="parent_id" ref="website.main_menu"/>
+        </record>
+    </data>
+</odoo>

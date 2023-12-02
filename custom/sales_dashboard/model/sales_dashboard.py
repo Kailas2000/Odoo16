@@ -114,7 +114,7 @@ class SalesDashboard(models.Model):
                 order_state
             )
 
-        # sale order based on order state
+        # sale order based on invoice state
         invoice_status = sale_orders.mapped('invoice_status')
         invoice_state = []
         invoice_value = []

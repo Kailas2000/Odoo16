@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="page_about_us" model="website.page">
+        <field name="name">About us</field>
+        <field name="is_published" eval="True"/>
+        <field name="url">/about-us</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="theme_cybro_page_about_us">
+                <t t-set="additional_title" t-value="'CYBRO ABOUT US'"/>
+                <t t-set="website_meta_description" t-value="'META DESCRIPTION'"/>
+<!--                <t t-set="no_header" t-value="True"/>-->
+<!--                <t t-set="no_footer" t-value="True"/>-->
+                <t t-call="website.layout">
+                    <div id="wrap" class="oe_structure">
+                        <h1>hello world</h1>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record>
+</odoo>

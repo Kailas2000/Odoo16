@@ -543,6 +543,7 @@ class Survey(http.Controller):
                     answer_sudo._mark_done()
 
             answer_sudo.write({'last_displayed_page_id': page_or_question_id})
+
         return self._prepare_question_html(survey_sudo, answer_sudo)
 
     def _extract_comment_from_answers(self, question, answers):
